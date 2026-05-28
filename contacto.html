@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Contacto | Trimoteros del Sur</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<style>
+
+body{
+background: linear-gradient(135deg,#0f3d2e,#000);
+color:white;
+}
+
+/* NAVBAR */
+.navbar{
+background:black;
+}
+
+/* CONTENEDOR */
+.contacto{
+max-width:600px;
+margin:auto;
+margin-top:80px;
+background:#1c1c1c;
+padding:30px;
+border-radius:15px;
+box-shadow:0 0 20px rgba(0,0,0,0.8);
+animation: aparecer 1s ease;
+}
+
+@keyframes aparecer{
+from{opacity:0; transform:translateY(20px);}
+to{opacity:1; transform:translateY(0);}
+}
+
+/* INPUTS */
+.form-control{
+background:#333;
+border:none;
+color:white;
+}
+
+.form-control:focus{
+background:#444;
+color:white;
+box-shadow:0 0 10px orange;
+}
+
+/* BOTÓN */
+.btn-motero{
+background:orange;
+color:black;
+width:100%;
+font-weight:bold;
+transition:0.3s;
+}
+
+.btn-motero:hover{
+background:#ff8800;
+transform:scale(1.05);
+}
+
+/* MENSAJE OK */
+#mensaje-ok{
+display:none;
+background:#28a745;
+padding:10px;
+margin-top:15px;
+border-radius:8px;
+text-align:center;
+font-weight:bold;
+}
+
+/* WHATSAPP */
+.whatsapp-pro{
+display:block;
+text-align:center;
+margin-top:20px;
+padding:12px;
+background:#25D366;
+color:white;
+border-radius:8px;
+text-decoration:none;
+font-weight:bold;
+transition:0.3s;
+}
+
+.whatsapp-pro:hover{
+background:#1ebe5d;
+transform:scale(1.05);
+}
+
+footer{
+background:black;
+margin-top:50px;
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg navbar-dark shadow">
+  <div class="container">
+
+    <a class="navbar-brand d-flex align-items-center" href="index.html">
+      <img src="img/logo.png" width="50" class="me-2">
+      Trimoteros del Sur
+    </a>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="menu">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>
+        <li class="nav-item"><a class="nav-link" href="noticias.html">Noticias</a></li>
+        <li class="nav-item"><a class="nav-link" href="rutas.html">Rutas</a></li>
+        <li class="nav-item"><a class="nav-link" href="sobre-nosotros.html">Sobre Nosotros</a></li>
+        <li class="nav-item"><a class="nav-link active" href="contacto.html">Contacto</a></li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+<!-- CONTENIDO -->
+<div class="contacto">
+
+<h2 class="text-center mb-4">📩 Contacta con nosotros</h2>
+
+<form id="formulario">
+
+<div class="mb-3">
+<label>Nombre</label>
+<input type="text" name="nombre" class="form-control" placeholder="Tu nombre" required>
+</div>
+
+<div class="mb-3">
+<label>Email</label>
+<input type="email" name="email" class="form-control" placeholder="Tu email" required>
+</div>
+
+<div class="mb-3">
+<label>Mensaje</label>
+<textarea name="mensaje" class="form-control" rows="4" placeholder="Escribe tu mensaje" required></textarea>
+</div>
+
+<button type="submit" class="btn btn-motero">Enviar mensaje</button>
+
+<div id="mensaje-ok">✅ Mensaje enviado correctamente</div>
+
+</form>
+
+<!-- WHATSAPP -->
+<a href="https://wa.me/34680117661?text=Hola%20quiero%20unirme%20al%20club" target="_blank" class="whatsapp-pro">
+💬 Hablar por WhatsApp
+</a>
+
+</div>
+
+<!-- FOOTER -->
+<footer class="text-center p-3">
+© 2026 Trimoteros del Sur 🏍️
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+const form = document.getElementById("formulario");
+
+form.addEventListener("submit", async function(e){
+  e.preventDefault();
+
+  const data = new FormData(form);
+
+  try{
+    const response = await fetch("https://formspree.io/f/mkoeklwk", {
+      method: "POST",
+      body: data,
+      headers: {
+        'Accept': 'application/json'
+      }
+    });
+
+    if(response.ok){
+      document.getElementById("mensaje-ok").style.display = "block";
+      form.reset();
+    } else {
+      alert("Error al enviar. Inténtalo de nuevo.");
+    }
+
+  } catch(error){
+    alert("Error de conexión.");
+  }
+});
+</script>
+
+</body>
+</html>
