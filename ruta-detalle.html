@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Noticias - Trimoteros del Sur</title>
+    <title>Detalle de la Ruta - Trimoteros del Sur</title>
     
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800;900&display=swap" rel="stylesheet">
@@ -25,7 +25,7 @@
             overflow-x: hidden;
         }
 
-        /* NAVBAR (IDÉNTICO) */
+        /* NAVBAR (IDÉNTICO A RUTAS.HTML) */
         .navbar {
             background: rgba(0, 0, 0, 0.9);
             border-bottom: 1px solid var(--color-borde);
@@ -86,123 +86,121 @@
             color: black;
         }
 
-        /* HERO SECCIÓN NOTICIAS */
-        .hero-seccion {
-            padding: 120px 0 60px 0;
+        /* HERO DE LA RUTA (Sección superior con foto de fondo limpia) */
+        .hero-ruta {
+            height: 55vh;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 85px; /* Espacio para que el navbar fijo no tape el título */
+        }
+        .hero-ruta-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+        }
+        .hero-ruta-bg img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .hero-ruta-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(10, 10, 10, 0.45); /* Mantenemos el fondo claro/visible */
+            z-index: 1;
+        }
+        .hero-ruta-content {
+            position: relative;
+            z-index: 2;
             text-align: center;
-            background: linear-gradient(to bottom, rgba(20,20,20,0.4), var(--color-fondo));
-            margin-top: 85px;
+            width: 100%;
+            max-width: 900px;
+            padding: 0 20px;
+            text-shadow: 0 4px 15px rgba(0, 0, 0, 0.8);
         }
-        .hero-seccion span {
-            color: var(--color-naranja);
-            font-size: 0.85rem;
-            font-weight: 700;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-        }
-        .hero-seccion h1 {
-            font-size: 4.5rem;
+        .hero-ruta h1 {
+            font-size: 3.8rem;
             font-weight: 900;
             text-transform: uppercase;
             background: linear-gradient(to bottom, #ffb347, #ff8c00);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            margin: 10px 0;
+            margin-bottom: 15px;
         }
-
-        /* SECCIONES TITULOS */
-        .seccion-tag {
+        .card-badge {
+            border: 1px solid rgba(255,140,0,0.5); 
             color: var(--color-naranja);
-            font-size: 0.8rem;
-            font-weight: 800;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            margin-bottom: 30px;
-            display: block;
+            padding: 5px 12px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            display: inline-block;
         }
 
-        /* TARJETAS DE NOTICIAS */
-        .card-noticia {
+        /* DISEÑO DE CONTENIDO COMODO */
+        .section-padding {
+            padding: 70px 0;
+        }
+        .info-panel {
             background: #0d0d0d;
             border: 1px solid var(--color-borde);
             border-radius: 8px;
             padding: 30px;
-            height: 100%;
+        }
+        .meta-item {
+            border-bottom: 1px solid #1a1a1a;
+            padding: 15px 0;
             display: flex;
-            flex-direction: column;
             justify-content: space-between;
-            transition: 0.3s;
-        }
-        .card-noticia:hover {
-            border-color: var(--color-naranja);
-            box-shadow: 0 0 20px rgba(255, 140, 0, 0.1);
-        }
-        .card-noticia-header {
-            display: flex;
             align-items: center;
-            gap: 15px;
-            margin-bottom: 20px;
         }
-        .badge-categoria {
-            padding: 4px 10px;
-            border-radius: 4px;
-            font-size: 0.7rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            background: rgba(255, 140, 0, 0.1);
-            color: var(--color-naranja);
-            border: 1px solid rgba(255, 140, 0, 0.2);
+        .meta-item:last-child {
+            border-bottom: none;
         }
-        .noticia-fecha {
-            color: #555;
-            font-size: 0.8rem;
-            font-weight: 600;
-        }
-        .card-noticia h3 {
-            font-size: 1.4rem;
-            font-weight: 800;
-            margin-bottom: 15px;
-            color: white;
-            line-height: 1.4;
-        }
-        .card-noticia p {
+        .meta-label {
             color: var(--color-gris);
-            font-size: 0.9rem;
-            line-height: 1.6;
-            margin-bottom: 25px;
-        }
-        .card-noticia-footer {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-top: 1px solid #111;
-            padding-top: 15px;
-        }
-        .lectura-tiempo {
-            color: #444;
-            font-size: 0.8rem;
             font-weight: 600;
-        }
-        .btn-leer-mas {
-            color: var(--color-naranja);
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 0.85rem;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: 0.3s;
+            font-size: 0.85rem;
         }
-        .btn-leer-mas:hover {
-            color: var(--color-naranja-claro);
-            padding-left: 5px;
+        .meta-value {
+            color: var(--color-naranja);
+            font-weight: 800;
         }
 
-        /* FOOTER (IDÉNTICO) */
+        /* CONTENEDORES PARA FOTOS FUTURAS (ZONAS GRISEADAS DE ESPERA) */
+        .foto-placeholder {
+            background: #0d0d0d;
+            border: 2px dashed #222;
+            border-radius: 8px;
+            height: 250px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #444;
+            transition: 0.3s;
+        }
+        .foto-placeholder:hover {
+            border-color: var(--color-naranja);
+            color: var(--color-gris);
+        }
+
+        /* FOOTER (IDÉNTICO A RUTAS.HTML) */
         footer {
             background: #000;
             border-top: 1px solid var(--color-borde);
             padding: 60px 0 30px 0;
-            margin-top: 80px;
+            margin-top: 50px;
         }
         .footer-title {
             color: var(--color-naranja);
@@ -279,8 +277,8 @@
         <div class="collapse navbar-collapse" id="menu">
             <ul class="navbar-nav mx-auto">
                 <li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>
-                <li class="nav-item"><a class="nav-link" href="rutas.html">Rutas</a></li>
-                <li class="nav-item active"><a class="nav-link" href="noticias.html">Noticias</a></li>
+                <li class="nav-item active"><a class="nav-link" href="rutas.html">Rutas</a></li>
+                <li class="nav-item"><a class="nav-link" href="noticias.html">Noticias</a></li>
                 <li class="nav-item"><a class="nav-link" href="sobre-nosotros.html">Sobre Nosotros</a></li>
                 <li class="nav-item"><a class="nav-link" href="contacto.html">Contacto</a></li>
             </ul>
@@ -289,108 +287,85 @@
     </div>
 </nav>
 
-<section class="hero-seccion container">
-    <span>Actualidad</span>
-    <h1>Noticias</h1>
-    <p class="text-secondary col-md-6 mx-auto">Lo que pasa en la carretera y en el club. Todo al día.</p>
+<section class="hero-ruta">
+    <div class="hero-ruta-bg">
+        <img src="https://images.unsplash.com/photo-1558981806-ec527fa84c39?auto=format&fit=crop&q=80&w=1500" alt="Fondo Detalle Ruta">
+    </div>
+    <div class="hero-ruta-overlay"></div>
+    <div class="hero-ruta-content">
+        <div class="card-badge mb-3">CRÓNICA DE CARRETERA</div>
+        <h1>Ruta de las Alpujarras</h1>
+        <p class="lead text-white-50 fs-5">Curvas infinitas y asfalto de montaña cruzando el corazón de Sierra Nevada.</p>
+    </div>
 </section>
 
-<main class="container mb-5">
-    
-    <span class="seccion-tag">Destacadas</span>
-    <div class="row g-4 mb-5">
+<section class="section-padding container">
+    <div class="row g-5">
         
-        <div class="col-lg-6">
-            <div class="card-noticia" style="border-top: 2px solid var(--color-naranja);">
-                <div>
-                    <div class="card-noticia-header">
-                        <span class="badge-categoria" style="background: rgba(111, 66, 193, 0.1); color: #6f42c1; border-color: rgba(111, 66, 193, 0.2);">Club</span>
-                        <span class="noticia-fecha"><i class="fa-regular fa-calendar me-1"></i> 15 Mayo 2025</span>
+        <div class="col-lg-8">
+            <h3 class="mb-4 text-uppercase fw-bold" style="letter-spacing: 1px;">Detalles del Recorrido</h3>
+            
+            <p class="text-secondary lh-lg mb-4">
+                Aquí puedes escribir todo lo relacionado con el itinerario. Cuál es el punto de encuentro inicial del club, por qué carreteras secundarias se transita y cuáles son los tramos más emocionantes para disfrutar de la conducción de las trimotos.
+            </p>
+            
+            <p class="text-secondary lh-lg mb-5">
+                También es un espacio idóneo para indicar las paradas de descanso, miradores sugeridos para tomar fotografías grupales, gasolineras recomendadas durante el trayecto y los restaurantes colaboradores donde el club acostumbra a almorzar.
+            </p>
+
+            <h3 class="mb-4 text-uppercase fw-bold text-warning" style="letter-spacing: 1px;">Galería Fotográfica</h3>
+            <div class="row g-3">
+                <div class="col-md-6">
+                    <div class="foto-placeholder">
+                        <div class="text-center"><i class="fa-regular fa-image fa-2x mb-2 text-secondary"></i><br><span class="small text-muted">Fotografía en ruta (Miniatura 1)</span></div>
                     </div>
-                    <h3>¡Trimoteros del Sur ha nacido!</h3>
-                    <p>Con 23 fundadores y mucha ilusión, arrancamos este proyecto que cambiará el paisaje motorista del sur de España. El primero de muchos capítulos de nuestra historia.</p>
                 </div>
-                <div class="card-noticia-footer">
-                    <span class="lectura-tiempo">3 min de lectura</span>
-                    <a href="noticia-detalle.html" class="btn-leer-mas">Leer más <i class="fa-solid fa-arrow-right small ms-1"></i></a>
+                <div class="col-md-6">
+                    <div class="foto-placeholder">
+                        <div class="text-center"><i class="fa-regular fa-image fa-2x mb-2 text-secondary"></i><br><span class="small text-muted">Fotografía en ruta (Miniatura 2)</span></div>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="foto-placeholder" style="height: 350px;">
+                        <div class="text-center"><i class="fa-regular fa-image fa-3x mb-2 text-secondary"></i><br><span class="small text-muted">Imagen Panorámica / Mapa de la Ruta</span></div>
+                    </div>
                 </div>
             </div>
         </div>
 
-        <div class="col-lg-6">
-            <div class="card-noticia" style="border-top: 2px solid var(--color-naranja);">
-                <div>
-                    <div class="card-noticia-header">
-                        <span class="badge-categoria">Evento</span>
-                        <span class="noticia-fecha"><i class="fa-regular fa-calendar me-1"></i> 2 Junio 2025</span>
-                    </div>
-                    <h3>Primera concentración oficial en Málaga</h3>
-                    <p>Más de 40 trimotos rugieron por el paseo marítimo de Málaga en nuestra primera salida oficial. Un día que quedará grabado en la historia del club.</p>
+        <div class="col-lg-4">
+            <div class="info-panel sticky-top" style="top: 110px; z-index: 10;">
+                <h4 class="mb-4 text-uppercase fw-extrabold text-white" style="font-weight: 800;">Ficha Técnica</h4>
+                
+                <div class="meta-item">
+                    <span class="meta-label"><i class="fa-solid fa-gauge me-2 text-warning"></i> Dificultad</span>
+                    <span class="meta-value text-warning">MEDIA</span>
                 </div>
-                <div class="card-noticia-footer">
-                    <span class="lectura-tiempo">5 min de lectura</span>
-                    <a href="noticia-detalle.html" class="btn-leer-mas">Leer más <i class="fa-solid fa-arrow-right small ms-1"></i></a>
+                <div class="meta-item">
+                    <span class="meta-label"><i class="fa-solid fa-road me-2"></i> Distancia</span>
+                    <span class="meta-value">180 km</span>
                 </div>
-            </div>
-        </div>
-    </div>
+                <div class="meta-item">
+                    <span class="meta-label"><i class="fa-regular fa-clock me-2"></i> Duración</span>
+                    <span class="meta-value">4 - 5 Horas</span>
+                </div>
+                <div class="meta-item">
+                    <span class="meta-label"><i class="fa-solid fa-location-dot me-2"></i> Zona</span>
+                    <span class="meta-value">Granada</span>
+                </div>
+                <div class="meta-item">
+                    <span class="meta-label"><i class="fa-solid fa-mountain me-2"></i> Entorno</span>
+                    <span class="meta-value">Alta Montaña</span>
+                </div>
 
-    <span class="seccion-tag">Más Noticias</span>
-    <div class="row g-4">
-        
-        <div class="col-lg-4 col-md-6">
-            <div class="card-noticia">
-                <div>
-                    <div class="card-noticia-header">
-                        <span class="badge-categoria" style="background: rgba(25, 135, 84, 0.1); color: #198754; border-color: rgba(25, 135, 84, 0.2);">Ruta</span>
-                        <span class="noticia-fecha">20 Junio 2025</span>
-                    </div>
-                    <h3>Conquistando Las Alpujarras</h3>
-                    <p>Crónica de nuestra épica ruta de 180 km entre los pueblos blancos de la Sierra Nevada. Trevélez, Pampaneira y mucha emoción en...</p>
-                </div>
-                <div class="card-noticia-footer">
-                    <span class="lectura-tiempo">7 min</span>
-                    <a href="noticia-detalle.html" class="btn-leer-mas">Leer más →</a>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-lg-4 col-md-6">
-            <div class="card-noticia">
-                <div>
-                    <div class="card-noticia-header">
-                        <span class="badge-categoria" style="background: rgba(13, 110, 253, 0.1); color: #0d6efd; border-color: rgba(13, 110, 253, 0.2);">Miembros</span>
-                        <span class="noticia-fecha">5 Julio 2025</span>
-                    </div>
-                    <h3>Ya somos 47 trimoteros del sur</h3>
-                    <p>El club sigue creciendo. En menos de dos meses hemos duplicado a nuestros fundadores. La familia crece y la pasión...</p>
-                </div>
-                <div class="card-noticia-footer">
-                    <span class="lectura-tiempo">2 min</span>
-                    <a href="noticia-detalle.html" class="btn-leer-mas">Leer más →</a>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-lg-4 col-md-6">
-            <div class="card-noticia">
-                <div>
-                    <div class="card-noticia-header">
-                        <span class="badge-categoria">Evento</span>
-                        <span class="noticia-fecha">18 Julio 2025</span>
-                    </div>
-                    <h3>Próxima concentración: Cabo de Gata</h3>
-                    <p>El 10 de agosto nos reuniremos en el Parque Natural de Cabo de Gata. Ruta volcánica, calas vírgenes y la mejor compañía.</p>
-                </div>
-                <div class="card-noticia-footer">
-                    <span class="lectura-tiempo">3 min</span>
-                    <a href="noticia-detalle.html" class="btn-leer-mas">Leer más →</a>
+                <div class="mt-4 pt-2">
+                    <a href="rutas.html" class="btn btn-outline-secondary w-100 text-uppercase fw-bold text-white border-secondary" style="font-size: 0.85rem;"><i class="fa-solid fa-arrow-left me-2"></i> Volver a rutas</a>
                 </div>
             </div>
         </div>
 
     </div>
-</main>
+</section>
 
 <footer>
     <div class="container">

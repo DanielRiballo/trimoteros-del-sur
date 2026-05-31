@@ -1,173 +1,405 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto | Trimoteros del Sur</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-<title>Contacto | Trimoteros del Sur</title>
+    <style>
+        :root {
+            --color-fondo: #050505;
+            --color-naranja: #ff8c00;
+            --color-naranja-claro: #ffb347;
+            --color-gris: #a0a0a0;
+            --color-borde: #161616;
+            --color-tarjeta: #0d0d0d;
+        }
 
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+        body {
+            background-color: var(--color-fondo);
+            color: white;
+            font-family: 'Montserrat', sans-serif;
+            overflow-x: hidden;
+        }
 
-<style>
+        /* NAVBAR (IDÉNTICO) */
+        .navbar {
+            background: rgba(0, 0, 0, 0.9);
+            border-bottom: 1px solid var(--color-borde);
+            padding: 10px 0;
+            backdrop-filter: blur(10px);
+        }
+        .navbar-brand {
+            font-weight: 800;
+            letter-spacing: 1px;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+        }
+        .navbar-brand span {
+            font-size: 0.7rem;
+            display: block;
+            color: var(--color-gris);
+            font-weight: 400;
+        }
+        .nav-link {
+            color: white !important;
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin: 0 10px;
+            text-transform: uppercase;
+            transition: 0.3s;
+        }
+        .nav-link:hover {
+            color: var(--color-naranja) !important;
+        }
+        .nav-item.active .nav-link {
+            color: var(--color-naranja) !important;
+            position: relative;
+        }
+        .nav-item.active .nav-link::after {
+            content: "•";
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: var(--color-naranja);
+            font-size: 1.5rem;
+        }
 
-body{
-background: linear-gradient(135deg,#0f3d2e,#000);
-color:white;
-}
+        /* BOTÓN NAV / UNETE */
+        .btn-naranja {
+            background: linear-gradient(90deg, var(--color-naranja), var(--color-naranja-claro));
+            color: black;
+            font-weight: 800;
+            text-transform: uppercase;
+            border: none;
+            padding: 10px 24px;
+            border-radius: 4px;
+            transition: 0.3s;
+        }
+        .btn-naranja:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 15px rgba(255, 140, 0, 0.5);
+            color: black;
+        }
 
-/* NAVBAR */
-.navbar{
-background:black;
-}
+        /* HERO SECCIÓN (Efecto Cuadrícula Coherente) */
+        .hero-seccion {
+            padding: 140px 0 50px 0;
+            text-align: center;
+            background-image: 
+                linear-gradient(to bottom, rgba(5,5,5,0.3), var(--color-fondo)),
+                linear-gradient(to right, rgba(255,140,0,0.04) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255,140,0,0.04) 1px, transparent 1px);
+            background-size: 100% 100%, 45px 45px, 45px 45px;
+            margin-top: 40px;
+        }
+        .hero-seccion span {
+            color: var(--color-naranja);
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+        .hero-seccion h1 {
+            font-size: 4.5rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            background: linear-gradient(to bottom, #ffb347, #ff8c00);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin: 10px 0;
+        }
 
-/* CONTENEDOR */
-.contacto{
-max-width:600px;
-margin:auto;
-margin-top:80px;
-background:#1c1c1c;
-padding:30px;
-border-radius:15px;
-box-shadow:0 0 20px rgba(0,0,0,0.8);
-animation: aparecer 1s ease;
-}
+        /* CONTENEDOR FORMULARIO */
+        .contacto {
+            max-width: 600px;
+            margin: 0 auto 80px auto;
+            background: var(--color-tarjeta);
+            padding: 40px;
+            border-radius: 8px;
+            border: 1px solid var(--color-borde);
+            position: relative;
+            animation: aparecer 0.8s ease forwards;
+        }
 
-@keyframes aparecer{
-from{opacity:0; transform:translateY(20px);}
-to{opacity:1; transform:translateY(0);}
-}
+        @keyframes aparecer {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
 
-/* INPUTS */
-.form-control{
-background:#333;
-border:none;
-color:white;
-}
+        .contacto h2 {
+            font-size: 1.8rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: -0.5px;
+        }
 
-.form-control:focus{
-background:#444;
-color:white;
-box-shadow:0 0 10px orange;
-}
+        /* INPUTS Y TEXTAREAS */
+        .form-label {
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+            color: var(--color-gris);
+            margin-bottom: 8px;
+        }
+        .form-control {
+            background: #111;
+            border: 1px solid #222;
+            color: white;
+            padding: 12px;
+            border-radius: 4px;
+            font-family: 'Montserrat', sans-serif;
+        }
+        .form-control:focus {
+            background: #161616;
+            color: white;
+            border-color: var(--color-naranja);
+            box-shadow: 0 0 12px rgba(255, 140, 0, 0.2);
+        }
 
-/* BOTÓN */
-.btn-motero{
-background:orange;
-color:black;
-width:100%;
-font-weight:bold;
-transition:0.3s;
-}
+        /* BOTÓN ENVIAR FORMULARIO */
+        .btn-motero {
+            background: linear-gradient(90deg, var(--color-naranja), var(--color-naranja-claro));
+            color: black;
+            width: 100%;
+            font-weight: 800;
+            text-transform: uppercase;
+            border: none;
+            padding: 14px;
+            border-radius: 4px;
+            transition: 0.3s;
+            letter-spacing: 1px;
+            margin-top: 10px;
+        }
+        .btn-motero:hover {
+            transform: scale(1.02);
+            box-shadow: 0 0 15px rgba(255, 140, 0, 0.4);
+            color: black;
+        }
 
-.btn-motero:hover{
-background:#ff8800;
-transform:scale(1.05);
-}
+        /* MENSAJE EXITO */
+        #mensaje-ok {
+            display: none;
+            background: rgba(40, 167, 69, 0.15);
+            border: 1px solid #28a745;
+            color: #28a745;
+            padding: 12px;
+            margin-top: 20px;
+            border-radius: 4px;
+            text-align: center;
+            font-weight: 700;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+        }
 
-/* MENSAJE OK */
-#mensaje-ok{
-display:none;
-background:#28a745;
-padding:10px;
-margin-top:15px;
-border-radius:8px;
-text-align:center;
-font-weight:bold;
-}
+        /* ENLACE WHATSAPP */
+        .whatsapp-pro {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            text-align: center;
+            margin-top: 20px;
+            padding: 14px;
+            background: #25D366;
+            color: white;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 800;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 0.5px;
+            transition: 0.3s;
+        }
+        .whatsapp-pro:hover {
+            background: #1ebe5d;
+            transform: scale(1.02);
+            color: white;
+            box-shadow: 0 0 15px rgba(37, 211, 102, 0.3);
+        }
 
-/* WHATSAPP */
-.whatsapp-pro{
-display:block;
-text-align:center;
-margin-top:20px;
-padding:12px;
-background:#25D366;
-color:white;
-border-radius:8px;
-text-decoration:none;
-font-weight:bold;
-transition:0.3s;
-}
-
-.whatsapp-pro:hover{
-background:#1ebe5d;
-transform:scale(1.05);
-}
-
-footer{
-background:black;
-margin-top:50px;
-}
-
-</style>
+        /* FOOTER (IDÉNTICO) */
+        footer {
+            background: #000;
+            border-top: 1px solid var(--color-borde);
+            padding: 60px 0 30px 0;
+        }
+        .footer-title {
+            color: var(--color-naranja);
+            font-weight: 800;
+            letter-spacing: 2px;
+            font-size: 0.9rem;
+            margin-bottom: 25px;
+            text-transform: uppercase;
+        }
+        .footer-text {
+            color: var(--color-gris);
+            font-size: 0.9rem;
+            line-height: 1.8;
+        }
+        .footer-links {
+            list-style: none;
+            padding: 0;
+        }
+        .footer-links li {
+            margin-bottom: 15px;
+        }
+        .footer-links a {
+            color: var(--color-gris);
+            text-decoration: none;
+            transition: 0.3s;
+        }
+        .footer-links a:hover {
+            color: var(--color-naranja);
+        }
+        .footer-contact li {
+            margin-bottom: 15px;
+            color: var(--color-gris);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .footer-contact i {
+            color: var(--color-naranja);
+        }
+        .social-icons a {
+            color: var(--color-gris);
+            font-size: 1.2rem;
+            margin-right: 15px;
+            transition: 0.3s;
+        }
+        .social-icons a:hover {
+            color: var(--color-naranja);
+        }
+        .footer-bottom {
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 1px solid var(--color-borde);
+            display: flex;
+            justify-content: space-between;
+            color: #555;
+            font-size: 0.8rem;
+        }
+    </style>
 </head>
-
 <body>
 
-<!-- NAVBAR -->
-<nav class="navbar navbar-expand-lg navbar-dark shadow">
-  <div class="container">
-
-    <a class="navbar-brand d-flex align-items-center" href="index.html">
-      <img src="img/logo.png" width="50" class="me-2">
-      Trimoteros del Sur
-    </a>
-
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="menu">
-      <ul class="navbar-nav ms-auto">
-        <li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>
-        <li class="nav-item"><a class="nav-link" href="noticias.html">Noticias</a></li>
-        <li class="nav-item"><a class="nav-link" href="rutas.html">Rutas</a></li>
-        <li class="nav-item"><a class="nav-link" href="sobre-nosotros.html">Sobre Nosotros</a></li>
-        <li class="nav-item"><a class="nav-link active" href="contacto.html">Contacto</a></li>
-      </ul>
+<nav class="navbar navbar-expand-lg fixed-top">
+    <div class="container">
+        <a class="navbar-brand text-white" href="index.html">
+            <img src="img/logo.png" width="65" class="me-3" alt="Logo">
+            <div>
+                TRIMOTEROS
+                <span>DEL SUR</span>
+            </div>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="menu">
+            <ul class="navbar-nav mx-auto">
+                <li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>
+                <li class="nav-item"><a class="nav-link" href="rutas.html">Rutas</a></li>
+                <li class="nav-item"><a class="nav-link" href="noticias.html">Noticias</a></li>
+                <li class="nav-item"><a class="nav-link" href="sobre-nosotros.html">Sobre Nosotros</a></li>
+                <li class="nav-item active"><a class="nav-link" href="contacto.html">Contacto</a></li>
+            </ul>
+            <a href="contacto.html" class="btn btn-naranja"><i class="fa-solid fa-fire me-2"></i> Únete</a>
+        </div>
     </div>
-
-  </div>
 </nav>
 
-<!-- CONTENIDO -->
-<div class="contacto">
+<section class="hero-seccion container">
+    <span>Contacto</span>
+    <h1>Escríbenos</h1>
+    <p class="text-secondary col-md-6 mx-auto">¿Tienes dudas, sugerencias o quieres rodar con nosotros? Ponte en contacto.</p>
+</section>
 
-<h2 class="text-center mb-4">📩 Contacta con nosotros</h2>
+<main class="container">
+    <div class="contacto">
+        <h2 class="text-center mb-4"><i class="fa-regular fa-envelope text-warning me-2"></i> Contacta con nosotros</h2>
+        
+        <form id="formulario">
+            <div class="mb-3">
+                <label class="form-label">Nombre</label>
+                <input type="text" name="nombre" class="form-control" placeholder="Tu nombre" required>
+            </div>
 
-<form id="formulario">
+            <div class="mb-3">
+                <label class="form-label">Email</label>
+                <input type="email" name="email" class="form-control" placeholder="Tu email" required>
+            </div>
 
-<div class="mb-3">
-<label>Nombre</label>
-<input type="text" name="nombre" class="form-control" placeholder="Tu nombre" required>
-</div>
+            <div class="mb-3">
+                <label class="form-label">Mensaje</label>
+                <textarea name="mensaje" class="form-control" rows="4" placeholder="Escribe tu mensaje" required></textarea>
+            </div>
 
-<div class="mb-3">
-<label>Email</label>
-<input type="email" name="email" class="form-control" placeholder="Tu email" required>
-</div>
+            <button type="submit" class="btn btn-motero">Enviar mensaje</button>
+            <div id="mensaje-ok">✅ Mensaje enviado correctamente</div>
+        </form>
 
-<div class="mb-3">
-<label>Mensaje</label>
-<textarea name="mensaje" class="form-control" rows="4" placeholder="Escribe tu mensaje" required></textarea>
-</div>
+        <div class="text-center my-3 text-muted small fw-bold">— O TAMBIÉN —</div>
 
-<button type="submit" class="btn btn-motero">Enviar mensaje</button>
+        <a href="https://wa.me/34680117661?text=Hola%20quiero%20unirme%20al%20club" target="_blank" class="whatsapp-pro">
+            <i class="fa-brands fa-whatsapp fa-lg"></i> Hablar por WhatsApp
+        </a>
+    </div>
+</main>
 
-<div id="mensaje-ok">✅ Mensaje enviado correctamente</div>
+<footer>
+    <div class="container">
+        <div class="row g-5">
+            <div class="col-lg-5">
+                <a class="navbar-brand text-white mb-4 d-inline-flex" href="index.html">
+                    <img src="img/logo.png" width="65" class="me-3" alt="Logo">
+                    <div>
+                        <span style="color: var(--color-naranja); font-weight: 800; font-size: 1.2rem;">TRIMOTEROS</span>
+                        <span style="font-size: 0.8rem; color: #666; display: block; letter-spacing: 2px;">DEL SUR</span>
+                    </div>
+                </a>
+                <p class="footer-text mt-3">La hermandad trimotora del sur de España. Unidos por la carretera, la libertad y el rugido del motor.</p>
+                <p class="footer-text mt-3 mb-4" style="font-size: 0.8rem; letter-spacing: 1px;">FUNDADO EN 2025 · ANDALUCÍA</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#"><i class="fa-brands fa-youtube"></i></a>
+                </div>
+            </div>
 
-</form>
+            <div class="col-lg-3 offset-lg-1">
+                <h5 class="footer-title">Navegación</h5>
+                <ul class="footer-links">
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="rutas.html">Rutas</a></li>
+                    <li><a href="noticias.html">Noticias</a></li>
+                    <li><a href="sobre-nosotros.html">Sobre Nosotros</a></li>
+                    <li><a href="contacto.html">Contacto</a></li>
+                </ul>
+            </div>
 
-<!-- WHATSAPP -->
-<a href="https://wa.me/34680117661?text=Hola%20quiero%20unirme%20al%20club" target="_blank" class="whatsapp-pro">
-💬 Hablar por WhatsApp
-</a>
+            <div class="col-lg-3">
+                <h5 class="footer-title">Contacto</h5>
+                <ul class="footer-links footer-contact">
+                    <li><i class="fa-solid fa-location-dot"></i> Andalucía, Sur de España</li>
+                    <li><i class="fa-regular fa-envelope"></i> contacto@trimoterosdelsur.es</li>
+                    <li><i class="fa-solid fa-phone"></i> +34 600 000 000</li>
+                </ul>
+            </div>
+        </div>
 
-</div>
-
-<!-- FOOTER -->
-<footer class="text-center p-3">
-© 2026 Trimoteros del Sur 🏍️
+        <div class="footer-bottom">
+            <div>© 2026 Trimoteros del Sur. Todos los derechos reservados.</div>
+            <div>HECHO CON FUEGO Y GASOLINA</div>
+        </div>
+    </div>
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>

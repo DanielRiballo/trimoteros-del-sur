@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nuestras Rutas - Trimoteros del Sur</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --color-fondo: #050505;
+            --color-naranja: #ff8c00;
+            --color-naranja-claro: #ffb347;
+            --color-gris: #a0a0a0;
+            --color-borde: #222;
+        }
+
+        body {
+            background-color: var(--color-fondo);
+            color: white;
+            font-family: 'Montserrat', sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* NAVBAR (IDÉNTICO) */
+        .navbar {
+            background: rgba(0, 0, 0, 0.9);
+            border-bottom: 1px solid var(--color-borde);
+            padding: 10px 0;
+        }
+        .navbar-brand {
+            font-weight: 800;
+            letter-spacing: 1px;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+        }
+        .navbar-brand span {
+            font-size: 0.7rem;
+            display: block;
+            color: var(--color-gris);
+            font-weight: 400;
+        }
+        .nav-link {
+            color: white !important;
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin: 0 10px;
+            text-transform: uppercase;
+            transition: 0.3s;
+        }
+        .nav-link:hover {
+            color: var(--color-naranja) !important;
+        }
+        .nav-item.active .nav-link {
+            color: var(--color-naranja) !important;
+            position: relative;
+        }
+        .nav-item.active .nav-link::after {
+            content: "•";
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: var(--color-naranja);
+            font-size: 1.5rem;
+        }
+
+        /* BOTONES */
+        .btn-naranja {
+            background: linear-gradient(90deg, var(--color-naranja), var(--color-naranja-claro));
+            color: black;
+            font-weight: 800;
+            text-transform: uppercase;
+            border: none;
+            padding: 10px 24px;
+            border-radius: 4px;
+            transition: 0.3s;
+        }
+        .btn-naranja:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 15px rgba(255, 140, 0, 0.5);
+            color: black;
+        }
+
+        /* HERO SECCIÓN RUTAS */
+        .hero-seccion {
+            padding: 120px 0 60px 0;
+            text-align: center;
+            background: linear-gradient(to bottom, rgba(20,20,20,0.4), var(--color-fondo));
+            margin-top: 85px;
+        }
+        .hero-seccion span {
+            color: var(--color-naranja);
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+        .hero-seccion h1 {
+            font-size: 4.5rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            background: linear-gradient(to bottom, #ffb347, #ff8c00);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin: 10px 0;
+        }
+
+        /* FILTROS DIFICULTAD */
+        .filtro-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 50px;
+            border-bottom: 1px solid #111;
+            padding-bottom: 20px;
+        }
+        .filtro-label {
+            color: #555;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+        .btn-filtro {
+            background: #0d0d0d;
+            border: 1px solid var(--color-borde);
+            color: white;
+            padding: 6px 20px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            transition: 0.3s;
+        }
+        .btn-filtro:hover, .btn-filtro.active {
+            background: var(--color-naranja);
+            color: black;
+            border-color: var(--color-naranja);
+        }
+
+        /* TARJETAS DE RUTA (Estilo exacto de tus capturas) */
+        .card-ruta {
+            background: #0d0d0d;
+            border: 1px solid var(--color-borde);
+            border-radius: 8px;
+            padding: 30px;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: 0.3s;
+            position: relative;
+        }
+        .card-ruta:hover {
+            border-color: var(--color-naranja);
+            box-shadow: 0 0 20px rgba(255, 140, 0, 0.1);
+            transform: translateY(-5px);
+        }
+        .card-ruta-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .badge-dificultad {
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+        .badge-dificultad.facil { background: rgba(25, 135, 84, 0.2); color: #198754; border: 1px solid rgba(25, 135, 84, 0.3); }
+        .badge-dificultad.media { background: rgba(255, 140, 0, 0.2); color: var(--color-naranja); border: 1px solid rgba(255, 140, 0, 0.3); }
+        .badge-dificultad.dificil { background: rgba(220, 53, 69, 0.2); color: #dc3545; border: 1px solid rgba(220, 53, 69, 0.3); }
+        
+        .ruta-tipo {
+            color: var(--color-gris);
+            font-size: 0.8rem;
+        }
+        .card-ruta h3 {
+            font-size: 1.5rem;
+            font-weight: 800;
+            margin-bottom: 15px;
+            color: white;
+        }
+        .card-ruta p {
+            color: var(--color-gris);
+            font-size: 0.9rem;
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+        .ruta-meta {
+            display: flex;
+            gap: 20px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 25px;
+            border-bottom: 1px solid #1a1a1a;
+            padding-bottom: 15px;
+        }
+        .ruta-meta i {
+            color: var(--color-naranja);
+        }
+        .ruta-tags {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 25px;
+            flex-wrap: wrap;
+        }
+        .tag-pueblo {
+            background: #161616;
+            color: #666;
+            padding: 3px 10px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+        .btn-ver-ruta {
+            color: var(--color-naranja);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: 0.3s;
+        }
+        .btn-ver-ruta:hover {
+            color: var(--color-naranja-claro);
+            gap: 15px;
+        }
+
+        /* COMUNIDAD BANNER */
+        .banner-comunidad {
+            text-align: center;
+            padding: 80px 0;
+            border-top: 1px solid #111;
+            margin-top: 50px;
+        }
+        .banner-comunidad p {
+            color: var(--color-gris);
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+        }
+        .banner-comunidad a {
+            color: var(--color-naranja);
+            text-decoration: none;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* FOOTER (IDÉNTICO) */
+        footer {
+            background: #000;
+            border-top: 1px solid var(--color-borde);
+            padding: 60px 0 30px 0;
+        }
+        .footer-title {
+            color: var(--color-naranja);
+            font-weight: 800;
+            letter-spacing: 2px;
+            font-size: 0.9rem;
+            margin-bottom: 25px;
+            text-transform: uppercase;
+        }
+        .footer-text {
+            color: var(--color-gris);
+            font-size: 0.9rem;
+            line-height: 1.8;
+        }
+        .footer-links {
+            list-style: none;
+            padding: 0;
+        }
+        .footer-links li {
+            margin-bottom: 15px;
+        }
+        .footer-links a {
+            color: var(--color-gris);
+            text-decoration: none;
+            transition: 0.3s;
+        }
+        .footer-links a:hover {
+            color: var(--color-naranja);
+        }
+        .footer-contact li {
+            margin-bottom: 15px;
+            color: var(--color-gris);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .footer-contact i {
+            color: var(--color-naranja);
+        }
+        .social-icons a {
+            color: var(--color-gris);
+            font-size: 1.2rem;
+            margin-right: 15px;
+            transition: 0.3s;
+        }
+        .social-icons a:hover {
+            color: var(--color-naranja);
+        }
+        .footer-bottom {
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 1px solid var(--color-borde);
+            display: flex;
+            justify-content: space-between;
+            color: #555;
+            font-size: 0.8rem;
+        }
+    </style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg fixed-top">
+    <div class="container">
+        <a class="navbar-brand text-white" href="index.html">
+            <img src="img/logo.png" width="65" class="me-3" alt="Logo">
+            <div>
+                TRIMOTEROS
+                <span>DEL SUR</span>
+            </div>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="menu">
+            <ul class="navbar-nav mx-auto">
+                <li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>
+                <li class="nav-item active"><a class="nav-link" href="rutas.html">Rutas</a></li>
+                <li class="nav-item"><a class="nav-link" href="noticias.html">Noticias</a></li>
+                <li class="nav-item"><a class="nav-link" href="sobre-nosotros.html">Sobre Nosotros</a></li>
+                <li class="nav-item"><a class="nav-link" href="contacto.html">Contacto</a></li>
+            </ul>
+            <a href="contacto.html" class="btn btn-naranja"><i class="fa-solid fa-fire me-2"></i> Únete</a>
+        </div>
+    </div>
+</nav>
+
+<section class="hero-seccion container">
+    <span>Nuestras Rutas</span>
+    <h1>Rutas</h1>
+    <p class="text-secondary col-md-6 mx-auto">Cada carretera es una historia. Aquí están las nuestras.</p>
+</section>
+
+<main class="container">
+    
+    <div class="filtro-container">
+        <span class="filtro-label">Dificultad:</span>
+        <button class="btn-filtro active">Todos</button>
+        <button class="btn-filtro">Fácil</button>
+        <button class="btn-filtro">Media</button>
+        <button class="btn-filtro">Difícil</button>
+        <span class="ms-auto text-secondary small">3 rutas disponibles</span>
+    </div>
+
+    <div class="row g-4">
+        
+        <div class="col-lg-4 col-md-6">
+            <div class="card-ruta">
+                <div>
+                    <div class="card-ruta-header">
+                        <span class="badge-dificultad media">Media</span>
+                        <span class="ruta-tipo"><i class="fa-solid fa-mountain me-1"></i> Montaña</span>
+                    </div>
+                    <h3>Ruta de las Alpujarras</h3>
+                    <p>Un viaje épico por los pueblos blancos de Sierra Nevada. Desde Lanjarón hasta Trevélez, el pueblo más alto de España.</p>
+                </div>
+                <div>
+                    <div class="ruta-meta">
+                        <span><i class="fa-solid fa-location-arrow me-1"></i> 180 km</span>
+                        <span><i class="fa-regular fa-clock me-1"></i> 4-5 h</span>
+                    </div>
+                    <div class="ruta-tags">
+                        <span class="tag-pueblo">Trevélez</span>
+                        <span class="tag-pueblo">Pampaneira</span>
+                        <span class="tag-pueblo">Capileira</span>
+                    </div>
+                    <a href="ruta-detalle.html" class="btn-ver-ruta">Ver ruta completa <i class="fa-solid fa-chevron-right"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6">
+            <div class="card-ruta">
+                <div>
+                    <div class="card-ruta-header">
+                        <span class="badge-dificultad facil">Fácil</span>
+                        <span class="ruta-tipo"><i class="fa-solid fa-water me-1"></i> Costera</span>
+                    </div>
+                    <h3>Costa del Sol Express</h3>
+                    <p>De Málaga a Estepona abrazando la Costa del Sol. El Mediterráneo a tu izquierda durante todo el trayecto.</p>
+                </div>
+                <div>
+                    <div class="ruta-meta">
+                        <span><i class="fa-solid fa-location-arrow me-1"></i> 120 km</span>
+                        <span><i class="fa-regular fa-clock me-1"></i> 2-3 h</span>
+                    </div>
+                    <div class="ruta-tags">
+                        <span class="tag-pueblo">Marbella</span>
+                        <span class="tag-pueblo">Puerto Banús</span>
+                        <span class="tag-pueblo">Estepona</span>
+                    </div>
+                    <a href="ruta-detalle.html" class="btn-ver-ruta">Ver ruta completa <i class="fa-solid fa-chevron-right"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6">
+            <div class="card-ruta">
+                <div>
+                    <div class="card-ruta-header">
+                        <span class="badge-dificultad dificil">Difícil</span>
+                        <span class="ruta-tipo"><i class="fa-solid fa-mountain me-1"></i> Alta Montaña</span>
+                    </div>
+                    <h3>Sierra Nevada Extrema</h3>
+                    <p>Para los valientes. Ascenso al puerto de La Ragua (2.041 m) y bajada espectacular hacia el desierto de Guadix.</p>
+                </div>
+                <div>
+                    <div class="ruta-meta">
+                        <span><i class="fa-solid fa-location-arrow me-1"></i> 250 km</span>
+                        <span><i class="fa-regular fa-clock me-1"></i> 6-7 h</span>
+                    </div>
+                    <div class="ruta-tags">
+                        <span class="tag-pueblo">Puerto de La Ragua</span>
+                        <span class="tag-pueblo">Guadix</span>
+                        <span class="tag-pueblo">Baza</span>
+                    </div>
+                    <a href="ruta-detalle.html" class="btn-ver-ruta">Ver ruta completa <i class="fa-solid fa-chevron-right"></i></a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="banner-comunidad">
+        <p>¿Conoces una ruta que debería estar aquí?</p>
+        <a href="contacto.html">Sugiérela a la comunidad →</a>
+    </div>
+</main>
+
+<footer>
+    <div class="container">
+        <div class="row g-5">
+            <div class="col-lg-5">
+                <a class="navbar-brand text-white mb-4 d-inline-flex" href="index.html">
+                    <img src="img/logo.png" width="65" class="me-3" alt="Logo">
+                    <div>
+                        <span style="color: var(--color-naranja); font-weight: 800; font-size: 1.2rem;">TRIMOTEROS</span>
+                        <span style="font-size: 0.8rem; color: #666; display: block; letter-spacing: 2px;">DEL SUR</span>
+                    </div>
+                </a>
+                <p class="footer-text mt-3">La hermandad trimotora del sur de España. Unidos por la carretera, la libertad y el rugido del motor.</p>
+                <p class="footer-text mt-3 mb-4" style="font-size: 0.8rem; letter-spacing: 1px;">FUNDADO EN 2025 · ANDALUCÍA</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#"><i class="fa-brands fa-youtube"></i></a>
+                </div>
+            </div>
+
+            <div class="col-lg-3 offset-lg-1">
+                <h5 class="footer-title">Navegación</h5>
+                <ul class="footer-links">
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="rutas.html">Rutas</a></li>
+                    <li><a href="noticias.html">Noticias</a></li>
+                    <li><a href="sobre-nosotros.html">Sobre Nosotros</a></li>
+                    <li><a href="contacto.html">Contacto</a></li>
+                </ul>
+            </div>
+
+            <div class="col-lg-3">
+                <h5 class="footer-title">Contacto</h5>
+                <ul class="footer-links footer-contact">
+                    <li><i class="fa-solid fa-location-dot"></i> Andalucía, Sur de España</li>
+                    <li><i class="fa-regular fa-envelope"></i> contacto@trimoterosdelsur.es</li>
+                    <li><i class="fa-solid fa-phone"></i> +34 600 000 000</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div>© 2025 Trimoteros del Sur. Todos los derechos reservados.</div>
+            <div>HECHO CON FUEGO Y GASOLINA</div>
+        </div>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
