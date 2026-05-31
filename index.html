@@ -1,273 +1,569 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trimoteros del Sur</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-<title>Trimoteros del Sur</title>
+    <style>
+        :root {
+            --color-fondo: #050505;
+            --color-naranja: #ff8c00;
+            --color-naranja-claro: #ffb347;
+            --color-gris: #a0a0a0;
+            --color-borde: #222;
+        }
 
-<meta name="google-site-verification" content="dVDBbcFOa0gx_6meawfdzF0vzXpozPLDEqHFJAqR52o" />
+        body {
+            background-color: var(--color-fondo);
+            color: white;
+            font-family: 'Montserrat', sans-serif;
+            overflow-x: hidden;
+        }
 
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+        /* NAVBAR */
+        .navbar {
+            background: rgba(0, 0, 0, 0.9);
+            border-bottom: 1px solid var(--color-borde);
+            padding: 10px 0; /* Ajustado sutilmente para acomodar el logo más grande */
+        }
+        .navbar-brand {
+            font-weight: 800;
+            letter-spacing: 1px;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+        }
+        .navbar-brand span {
+            font-size: 0.7rem;
+            display: block;
+            color: var(--color-gris);
+            font-weight: 400;
+        }
+        .nav-link {
+            color: white !important;
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin: 0 10px;
+            text-transform: uppercase;
+            transition: 0.3s;
+        }
+        .nav-link:hover {
+            color: var(--color-naranja) !important;
+        }
+        .nav-item.active .nav-link {
+            color: var(--color-naranja) !important;
+            position: relative;
+        }
+        .nav-item.active .nav-link::after {
+            content: "•";
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: var(--color-naranja);
+            font-size: 1.5rem;
+        }
 
-<style>
+        /* BOTONES */
+        .btn-naranja {
+            background: linear-gradient(90deg, var(--color-naranja), var(--color-naranja-claro));
+            color: black;
+            font-weight: 800;
+            text-transform: uppercase;
+            border: none;
+            padding: 10px 24px;
+            border-radius: 4px;
+            transition: 0.3s;
+        }
+        .btn-naranja:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 15px rgba(255, 140, 0, 0.5);
+            color: black;
+        }
+        .btn-outline-naranja {
+            background: transparent;
+            color: var(--color-naranja);
+            font-weight: 800;
+            text-transform: uppercase;
+            border: 1px solid var(--color-naranja);
+            padding: 10px 24px;
+            border-radius: 4px;
+            transition: 0.3s;
+        }
+        .btn-outline-naranja:hover {
+            background: var(--color-naranja);
+            color: black;
+        }
 
-body{
-background:#0f3d2e;
-color:white;
-overflow-x:hidden;
-}
+        /* HERO */
+        .hero {
+            height: 100vh;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            z-index: 0;
+        }
+        .hero-left {
+            width: 50%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 1fr 1fr;
+        }
+        .hero-left img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .hero-right {
+            width: 50%;
+        }
+        .hero-right video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(10, 10, 10, 0.45); /* Capa reducida a 0.45 para aclarar el fondo considerablemente */
+            background-image: linear-gradient(rgba(255,140,0,0.05) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(255,140,0,0.05) 1px, transparent 1px);
+            background-size: 50px 50px;
+            z-index: 1;
+        }
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            width: 100%;
+            max-width: 900px;
+            padding: 0 20px;
+            text-shadow: 0 4px 15px rgba(0, 0, 0, 0.8); /* Sombra añadida al texto para garantizar una perfecta lectura sobre el fondo más claro */
+        }
+        .badge-hero {
+            border: 1px solid rgba(255, 140, 0, 0.5);
+            color: var(--color-naranja);
+            background: rgba(0, 0, 0, 0.6);
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+            display: inline-block;
+        }
+        .hero h1 {
+            font-size: 5rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            line-height: 1.1;
+            background: linear-gradient(to bottom, #ffb347, #ff8c00);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 20px;
+        }
+        .hero p {
+            font-size: 1.2rem;
+            color: #ffffff; /* Texto cambiado a blanco puro para máxima legibilidad */
+            margin-bottom: 40px;
+        }
 
-/* NAVBAR */
-.navbar{
-background:black;
-}
+        /* SECCIONES Y TARJETAS */
+        .section-padding {
+            padding: 100px 0;
+        }
+        .section-subtitle {
+            color: var(--color-naranja);
+            font-weight: 800;
+            letter-spacing: 2px;
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            margin-bottom: 0;
+        }
+        .link-ver-todas {
+            color: var(--color-naranja);
+            text-decoration: none;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+        .link-ver-todas:hover {
+            color: white;
+        }
 
-/* HERO */
-.hero{
-height:100vh;
-position:relative;
-overflow:hidden;
-}
+        .card-custom {
+            background: #0d0d0d;
+            border: 1px solid var(--color-borde);
+            border-radius: 8px;
+            padding: 30px;
+            height: 100%;
+            transition: 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+        .card-custom:hover {
+            border-color: var(--color-naranja);
+            box-shadow: 0 0 20px rgba(255, 140, 0, 0.15);
+            transform: translateY(-5px);
+        }
+        .card-badge {
+            border: 1px solid;
+            padding: 5px 12px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+        .card-custom h4 {
+            font-weight: 800;
+            margin: 20px 0 15px 0;
+        }
+        .card-custom p {
+            color: var(--color-gris);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+        .card-bottom {
+            margin-top: 25px;
+            color: var(--color-naranja);
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .card-bottom a {
+            color: var(--color-naranja);
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            transition: 0.3s;
+        }
+        .card-bottom a:hover {
+            color: white;
+        }
 
-/* FONDO */
-.hero-bg{
-position:absolute;
-top:0;
-left:0;
-width:100%;
-height:100%;
-display:flex;
-z-index:0;
-}
+        /* COLORES DE BADGES */
+        .badge-media { border-color: rgba(255,140,0,0.5); color: var(--color-naranja); }
+        .badge-facil { border-color: rgba(40,167,69,0.5); color: #28a745; }
+        .badge-dificil { border-color: rgba(220,53,69,0.5); color: #dc3545; }
+        .badge-club { border-color: rgba(255,140,0,0.5); color: var(--color-naranja); }
 
-/* IZQUIERDA FOTOS */
-.hero-left{
-width:50%;
-display:grid;
-grid-template-columns:1fr 1fr;
-grid-template-rows:1fr 1fr;
-}
+        /* CTA (¿Eres Trimotero?) */
+        .cta-section {
+            text-align: center;
+            padding: 120px 20px;
+            background: radial-gradient(circle at center, rgba(255,140,0,0.1) 0%, transparent 60%);
+        }
+        .cta-icon {
+            color: var(--color-naranja);
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
 
-.hero-left img{
-width:100%;
-height:100%;
-object-fit:cover;
-}
+        /* FOOTER */
+        footer {
+            background: #000;
+            border-top: 1px solid var(--color-borde);
+            padding: 60px 0 30px 0;
+        }
+        .footer-title {
+            color: var(--color-naranja);
+            font-weight: 800;
+            letter-spacing: 2px;
+            font-size: 0.9rem;
+            margin-bottom: 25px;
+            text-transform: uppercase;
+        }
+        .footer-text {
+            color: var(--color-gris);
+            font-size: 0.9rem;
+            line-height: 1.8;
+        }
+        .footer-links {
+            list-style: none;
+            padding: 0;
+        }
+        .footer-links li {
+            margin-bottom: 15px;
+        }
+        .footer-links a {
+            color: var(--color-gris);
+            text-decoration: none;
+            transition: 0.3s;
+        }
+        .footer-links a:hover {
+            color: var(--color-naranja);
+        }
+        .footer-contact li {
+            margin-bottom: 15px;
+            color: var(--color-gris);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .footer-contact i {
+            color: var(--color-naranja);
+        }
+        .social-icons a {
+            color: var(--color-gris);
+            font-size: 1.2rem;
+            margin-right: 15px;
+            transition: 0.3s;
+        }
+        .social-icons a:hover {
+            color: var(--color-naranja);
+        }
+        .footer-bottom {
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 1px solid var(--color-borde);
+            display: flex;
+            justify-content: space-between;
+            color: #555;
+            font-size: 0.8rem;
+        }
 
-/* DERECHA VIDEO */
-.hero-right{
-width:50%;
-}
-
-.hero-right video{
-width:100%;
-height:100%;
-object-fit:cover;
-}
-
-/* OSCURECER */
-.hero-overlay{
-position:absolute;
-top:0;
-left:0;
-width:100%;
-height:100%;
-background:rgba(0,0,0,0.6);
-z-index:1;
-}
-
-/* TEXTO */
-.hero-content{
-position:relative;
-z-index:2;
-height:100%;
-display:flex;
-flex-direction:column;
-align-items:center;
-justify-content:center;
-text-align:center;
-}
-
-.hero h1{
-font-size:60px;
-color:orange;
-}
-
-/* BOTONES */
-.btn-motero{
-background:orange;
-color:black;
-}
-
-/* SECCIONES */
-.section{
-padding:80px 20px;
-}
-
-/* TARJETAS */
-.card{
-background:#1c1c1c;
-transition:0.3s;
-}
-.card:hover{
-transform:scale(1.05);
-}
-
-/* WHATSAPP */
-.whatsapp{
-position:fixed;
-bottom:20px;
-left:20px;
-background:#25D366;
-padding:15px;
-border-radius:50%;
-font-size:20px;
-text-decoration:none;
-}
-
-/* SCROLL */
-.scroll{
-opacity:0;
-transform:translateY(50px);
-transition:1s;
-}
-.visible{
-opacity:1;
-transform:translateY(0);
-}
-
-footer{
-background:black;
-}
-
-</style>
+    </style>
 </head>
 
 <body>
 
-<!-- NAVBAR -->
-<nav class="navbar navbar-expand-lg navbar-dark">
-<div class="container">
-
-<a class="navbar-brand d-flex align-items-center" href="#">
-<img src="img/logo.png" width="50" class="me-2">
-Trimoteros
-</a>
-
-<button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#menu">
-<span class="navbar-toggler-icon"></span>
-</button>
-
-<div class="collapse navbar-collapse" id="menu">
-<ul class="navbar-nav ms-auto">
-<li class="nav-item"><a class="nav-link" href="#">Inicio</a></li>
-<li class="nav-item"><a class="nav-link" href="noticias.html">Noticias</a></li>
-<li class="nav-item"><a class="nav-link" href="rutas.html">Rutas</a></li>
-<li class="nav-item"><a class="nav-link" href="sobre-nosotros.html">Nosotros</a></li>
-<li class="nav-item"><a class="nav-link" href="contacto.html">Contacto</a></li>
-</ul>
-</div>
-
-</div>
+<nav class="navbar navbar-expand-lg fixed-top">
+    <div class="container">
+        <a class="navbar-brand text-white" href="#">
+            <img src="img/logo.png" width="65" class="me-3" alt="Logo">
+            <div>
+                TRIMOTEROS
+                <span>DEL SUR</span>
+            </div>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="menu">
+            <ul class="navbar-nav mx-auto">
+                <li class="nav-item active"><a class="nav-link" href="#">Inicio</a></li>
+                <li class="nav-item"><a class="nav-link" href="rutas.html">Rutas</a></li>
+                <li class="nav-item"><a class="nav-link" href="noticias.html">Noticias</a></li>
+                <li class="nav-item"><a class="nav-link" href="sobre-nosotros.html">Sobre Nosotros</a></li>
+                <li class="nav-item"><a class="nav-link" href="contacto.html">Contacto</a></li>
+            </ul>
+            <a href="contacto.html" class="btn btn-naranja"><i class="fa-solid fa-fire me-2"></i> Únete</a>
+        </div>
+    </div>
 </nav>
 
-<!-- HERO -->
 <section class="hero">
+    <div class="hero-bg">
+        <div class="hero-left">
+            <img src="img/foto1.jpg" alt="Moto 1">
+            <img src="img/foto2.jpg" alt="Moto 2">
+            <img src="img/foto3.jpg" alt="Moto 3">
+            <img src="img/foto4.jpg" alt="Moto 4">
+        </div>
+        <div class="hero-right">
+            <video autoplay muted loop playsinline>
+                <source src="video/moto1.mp4" type="video/mp4">
+            </video>
+        </div>
+    </div>
 
-<div class="hero-bg">
+    <div class="hero-overlay"></div>
 
-  <!-- 4 FOTOS -->
-  <div class="hero-left">
-    <img src="img/foto1.jpg">
-    <img src="img/foto2.jpg">
-    <img src="img/foto3.jpg">
-    <img src="img/foto4.jpg">
-  </div>
-
-  <!-- VIDEO -->
-  <div class="hero-right">
-    <video autoplay muted loop>
-      <source src="video/moto1.mp4" type="video/mp4">
-    </video>
-  </div>
-
-</div>
-
-<div class="hero-overlay"></div>
-
-<div class="hero-content">
-  <h1>Trimoteros del Sur</h1>
-  <p>🔥 Más que un club… una hermandad</p>
-
-  <a href="rutas.html" class="btn btn-motero m-2">Ver rutas</a>
-  <a href="contacto.html" class="btn btn-outline-light m-2">Unirme</a>
-</div>
-
+    <div class="hero-content">
+        <span class="badge-hero">• FUNDADO EN 2025 · ANDALUCÍA</span>
+        <h1>Trimoteros<br>Del Sur</h1>
+        <p>La hermandad trimotora del sur de España. Unidos por<br>la carretera, la libertad y el rugido del motor.</p>
+        <div class="mt-5 d-flex justify-content-center gap-3">
+            <a href="rutas.html" class="btn btn-naranja" style="padding: 15px 30px;">Explorar Rutas</a>
+            <a href="sobre-nosotros.html" class="btn btn-outline-naranja" style="padding: 15px 30px;">Sobre Nosotros</a>
+        </div>
+    </div>
 </section>
 
-<!-- CONTADOR -->
-<section class="section text-center scroll">
-<h2>🏍️ El Club</h2>
+<section class="section-padding container">
+    <div class="d-flex justify-content-between align-items-end mb-5">
+        <div>
+            <div class="section-subtitle">En Carretera</div>
+            <h2 class="section-title">Rutas Destacadas</h2>
+        </div>
+        <a href="rutas.html" class="link-ver-todas">VER TODAS &rarr;</a>
+    </div>
 
-<div class="row mt-4">
-<div class="col-md-4"><h1 id="m">0</h1><p>Miembros</p></div>
-<div class="col-md-4"><h1 id="r">0</h1><p>Rutas</p></div>
-<div class="col-md-4"><h1 id="k">0</h1><p>Kilómetros</p></div>
-</div>
+    <div class="row g-4">
+        <div class="col-md-4">
+            <div class="card-custom">
+                <div class="d-flex justify-content-between align-items-center mb-2">
+                    <span class="card-badge badge-media">MEDIA</span>
+                    <span class="text-secondary small"><i class="fa-solid fa-location-dot me-1"></i> Montaña</span>
+                </div>
+                <h4 class="text-warning">Ruta de las Alpujarras</h4>
+                <p>Un viaje épico por los pueblos blancos de Sierra Nevada, con vistas que quitan el aliento.</p>
+                <div class="card-bottom">
+                    <i class="fa-regular fa-paper-plane"></i> 180 km
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card-custom">
+                <div class="d-flex justify-content-between align-items-center mb-2">
+                    <span class="card-badge badge-facil">FÁCIL</span>
+                    <span class="text-secondary small"><i class="fa-solid fa-location-dot me-1"></i> Costera</span>
+                </div>
+                <h4 class="text-white">Costa del Sol Express</h4>
+                <p>De Málaga a Estepona por la N-340, disfrutando del mar y el sol del sur.</p>
+                <div class="card-bottom">
+                    <i class="fa-regular fa-paper-plane"></i> 120 km
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card-custom">
+                <div class="d-flex justify-content-between align-items-center mb-2">
+                    <span class="card-badge badge-dificil">DIFÍCIL</span>
+                    <span class="text-secondary small"><i class="fa-solid fa-location-dot me-1"></i> Alta Montaña</span>
+                </div>
+                <h4 class="text-white">Sierra Nevada Extrema</h4>
+                <p>Para los valientes. Ascenso al puerto de La Ragua y vuelta espectacular por Guadix.</p>
+                <div class="card-bottom">
+                    <i class="fa-regular fa-paper-plane"></i> 250 km
+                </div>
+            </div>
+        </div>
+    </div>
 </section>
 
-<!-- MIEMBROS -->
-<section class="section text-center scroll">
-<h2>👊 Núcleo del Club</h2>
+<section class="section-padding container">
+    <div class="d-flex justify-content-between align-items-end mb-5">
+        <div>
+            <div class="section-subtitle">Lo Último</div>
+            <h2 class="section-title">Noticias del Club</h2>
+        </div>
+        <a href="noticias.html" class="link-ver-todas">VER TODAS &rarr;</a>
+    </div>
 
-<div class="row">
-<div class="col-md-4"><div class="card p-3"><h4>El Capitán</h4><p>El que lidera la ruta.</p></div></div>
-<div class="col-md-4"><div class="card p-3"><h4>El Mecánico</h4><p>Siempre listo.</p></div></div>
-<div class="col-md-4"><div class="card p-3"><h4>El Loco</h4><p>El que nunca frena.</p></div></div>
-</div>
+    <div class="row g-4">
+        <div class="col-md-4">
+            <div class="card-custom">
+                <div class="d-flex align-items-center gap-3 mb-2">
+                    <span class="card-badge badge-club">CLUB</span>
+                    <span class="text-secondary small">Mayo 2025</span>
+                </div>
+                <h4 class="text-white">¡Trimoteros del Sur ha nacido!</h4>
+                <p>Con 23 fundadores y mucha ilusión, arrancamos este proyecto que cambiará el paisaje motorista del sur.</p>
+                <div class="card-bottom">
+                    <a href="#">LEER MÁS &rarr;</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card-custom">
+                <div class="d-flex align-items-center gap-3 mb-2">
+                    <span class="card-badge badge-club">EVENTO</span>
+                    <span class="text-secondary small">Junio 2025</span>
+                </div>
+                <h4 class="text-white">Primera concentración oficial en Málaga</h4>
+                <p>Más de 40 trimotos rugieron por el paseo marítimo de Málaga en nuestra primera salida oficial.</p>
+                <div class="card-bottom">
+                    <a href="#">LEER MÁS &rarr;</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card-custom">
+                <div class="d-flex align-items-center gap-3 mb-2">
+                    <span class="card-badge badge-club">RUTA</span>
+                    <span class="text-secondary small">Julio 2025</span>
+                </div>
+                <h4 class="text-warning">Conquistando Las Alpujarras</h4>
+                <p>Crónica de nuestra épica ruta de 180 km entre los pueblos blancos de la Sierra Nevada.</p>
+                <div class="card-bottom">
+                    <a href="#">LEER MÁS &rarr;</a>
+                </div>
+            </div>
+        </div>
+    </div>
 </section>
 
-<!-- FRASE -->
-<section class="section text-center scroll">
-<h2>💀 Filosofía</h2>
-<p style="color:orange;font-size:22px;">
-“No es la moto… es quién la conduce.”
-</p>
+<section class="cta-section">
+    <div class="container">
+        <i class="fa-solid fa-fire cta-icon"></i>
+        <h2 class="display-3 fw-black text-uppercase mb-3" style="font-weight: 900;">¿Eres Trimotero?</h2>
+        <p class="lead text-secondary mb-5" style="max-width: 600px; margin: 0 auto;">Únete a la familia más salvaje del sur. Rodamos juntos, vivimos la ruta.</p>
+        <a href="contacto.html" class="btn btn-naranja" style="padding: 15px 40px; font-size: 1.1rem;">ÚNETE AL CLUB</a>
+    </div>
 </section>
 
-<!-- WHATSAPP -->
-<a href="https://wa.me/34680117661?text=Hola%20quiero%20unirme%20al%20club" target="_blank" class="whatsapp">💬</a>
+<footer>
+    <div class="container">
+        <div class="row g-5">
+            <div class="col-lg-5">
+                <a class="navbar-brand text-white mb-4 d-inline-flex" href="#">
+                    <img src="img/logo.png" width="65" class="me-3" alt="Logo">
+                    <div>
+                        <span style="color: var(--color-naranja); font-weight: 800; font-size: 1.2rem;">TRIMOTEROS</span>
+                        <span style="font-size: 0.8rem; color: #666; display: block; letter-spacing: 2px;">DEL SUR</span>
+                    </div>
+                </a>
+                <p class="footer-text mt-3">La hermandad trimotora del sur de España. Unidos por la carretera, la libertad y el rugido del motor.</p>
+                <p class="footer-text mt-3 mb-4" style="font-size: 0.8rem; letter-spacing: 1px;">FUNDADO EN 2025 · ANDALUCÍA</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#"><i class="fa-brands fa-youtube"></i></a>
+                </div>
+            </div>
 
-<!-- FOOTER -->
-<footer class="text-center p-3">
-© 2026 Trimoteros del Sur 🏍️
+            <div class="col-lg-3 offset-lg-1">
+                <h5 class="footer-title">Navegación</h5>
+                <ul class="footer-links">
+                    <li><a href="#">Inicio</a></li>
+                    <li><a href="rutas.html">Rutas</a></li>
+                    <li><a href="noticias.html">Noticias</a></li>
+                    <li><a href="sobre-nosotros.html">Sobre Nosotros</a></li>
+                    <li><a href="contacto.html">Contacto</a></li>
+                </ul>
+            </div>
+
+            <div class="col-lg-3">
+                <h5 class="footer-title">Contacto</h5>
+                <ul class="footer-links footer-contact">
+                    <li><i class="fa-solid fa-location-dot"></i> Andalucía, Sur de España</li>
+                    <li><i class="fa-regular fa-envelope"></i> contacto@trimoterosdelsur.es</li>
+                    <li><i class="fa-solid fa-phone"></i> +34 600 000 000</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div>© 2025 Trimoteros del Sur. Todos los derechos reservados.</div>
+            <div>HECHO CON FUEGO Y GASOLINA</div>
+        </div>
+    </div>
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-
-<script>
-
-/* SCROLL */
-let elementos = document.querySelectorAll(".scroll");
-
-window.addEventListener("scroll", ()=>{
-elementos.forEach(el=>{
-if(el.getBoundingClientRect().top < window.innerHeight){
-el.classList.add("visible");
-}
-});
-});
-
-/* CONTADOR */
-let m=0,r=0,k=0;
-setInterval(()=>{
-if(m<150){m++;document.getElementById("m").innerText=m;}
-if(r<60){r++;document.getElementById("r").innerText=r;}
-if(k<20000){k+=250;document.getElementById("k").innerText=k;}
-},40);
-
-</script>
-
 </body>
 </html>
