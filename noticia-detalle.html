@@ -55,6 +55,19 @@
         .nav-link:hover {
             color: var(--color-naranja) !important;
         }
+        .nav-item.active .nav-link {
+            color: var(--color-naranja) !important;
+            position: relative;
+        }
+        .nav-item.active .nav-link::after {
+            content: "•";
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: var(--color-naranja);
+            font-size: 1.5rem;
+        }
 
         /* BOTONES */
         .btn-naranja {
@@ -67,8 +80,13 @@
             border-radius: 4px;
             transition: 0.3s;
         }
+        .btn-naranja:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 15px rgba(255, 140, 0, 0.5);
+            color: black;
+        }
 
-        /* CABECERA ARTÍCULO (Limpio y claro) */
+        /* CABECERA ARTÍCULO */
         .article-header {
             margin-top: 150px;
             margin-bottom: 50px;
@@ -178,6 +196,61 @@
             color: #555;
             font-size: 0.8rem;
         }
+
+        /* =========================================
+           ADAPTACIÓN RESPONSIVE (MÓVILES Y TABLETS)
+           ========================================= */
+
+        @media (max-width: 991px) {
+            .article-header {
+                margin-top: 120px;
+                margin-bottom: 35px;
+            }
+            .article-header h1 {
+                font-size: 2.8rem;
+            }
+            .foto-portada-placeholder {
+                height: 350px;
+                margin-bottom: 35px;
+            }
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+                gap: 15px;
+            }
+            .navbar-toggler {
+                border-color: var(--color-naranja);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .article-header {
+                margin-top: 100px;
+                margin-bottom: 25px;
+            }
+            .article-header h1 {
+                font-size: 2rem;
+            }
+            .article-meta-top {
+                flex-wrap: wrap;
+                gap: 8px;
+                margin-bottom: 15px;
+            }
+            .foto-portada-placeholder {
+                height: 250px;
+                margin-bottom: 30px;
+            }
+            .cuerpo-articulo p {
+                font-size: 1rem;
+                line-height: 1.7;
+                margin-bottom: 20px;
+            }
+            .cuerpo-articulo blockquote {
+                margin: 30px 0;
+                padding-left: 15px;
+                font-size: 1.15rem;
+            }
+        }
     </style>
 </head>
 <body>
@@ -191,6 +264,9 @@
                 <span>DEL SUR</span>
             </div>
         </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu">
+            <span class="navbar-toggler-icon"></span>
+        </button>
         <div class="collapse navbar-collapse" id="menu">
             <ul class="navbar-nav mx-auto">
                 <li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>
@@ -219,7 +295,7 @@
             </header>
 
             <div class="foto-portada-placeholder">
-                <div class="text-center">
+                <div class="text-center px-3">
                     <i class="fa-regular fa-image fa-3x mb-3 text-secondary"></i><br>
                     <span class="text-muted">Espacio para la Foto de Cabecera del Artículo</span>
                 </div>
