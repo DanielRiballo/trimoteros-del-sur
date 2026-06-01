@@ -340,6 +340,50 @@
             color: #555;
             font-size: 0.8rem;
         }
+
+        /* =========================================
+           ADAPTACIÓN RESPONSIVE (MÓVILES Y TABLETS)
+           ========================================= */
+        @media (max-width: 991px) {
+            .hero-seccion {
+                padding: 110px 0 50px 0;
+            }
+            .hero-seccion h1 {
+                font-size: 3.2rem;
+            }
+            .seccion-titulo {
+                font-size: 1.8rem;
+                margin-bottom: 20px;
+            }
+            .logo-decorativo-container {
+                margin-top: 40px;
+            }
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+                gap: 15px;
+            }
+            .navbar-toggler {
+                border-color: var(--color-naranja);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-seccion h1 {
+                font-size: 2.4rem;
+            }
+            .seccion-unete h2 {
+                font-size: 1.8rem;
+            }
+            .logo-decorativo {
+                width: 220px;
+                height: 220px;
+            }
+            .logo-decorativo::before {
+                width: 250px;
+                height: 250px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -372,7 +416,7 @@
 <section class="hero-seccion container">
     <span>Quiénes somos</span>
     <h1>Sobre Nosotros</h1>
-    <p class="text-secondary col-md-6 mx-auto">Una historia de asfalto, libertad y pasión nacida en el corazón del sur.</p>
+    <p class="text-secondary col-md-6 mx-auto px-3">Una historia de asfalto, libertad y pasión nacida en el corazón del sur.</p>
 </section>
 
 <section class="container my-5 py-4">
@@ -403,7 +447,7 @@
     <div class="row g-4">
         <div class="col-lg-3 col-md-6">
             <div class="card-pilar">
-                <div class="pilar-icono"><i class="fa-solid fa-fire-blur"></i></div>
+                <div class="pilar-icono"><i class="fa-solid fa-fire-flame-curved"></i></div>
                 <h3>Pasión</h3>
                 <p>La moto no es un hobby, es un estilo de vida. Cada kilómetro es una declaración de principios.</p>
             </div>
@@ -476,7 +520,7 @@
 <section class="seccion-unete container">
     <i class="fa-regular fa-star"></i>
     <h2>Forma parte de la historia</h2>
-    <p class="text-secondary col-md-6 mx-auto mb-4">La próxima página del libro aún no está escrita. ¿La escribimos juntos?</p>
+    <p class="text-secondary col-md-6 mx-auto mb-4 px-3">La próxima página del libro aún no está escrita. ¿La escribimos juntos?</p>
     <a href="contacto.html" class="btn btn-naranja">Únete al club</a>
 </section>
 

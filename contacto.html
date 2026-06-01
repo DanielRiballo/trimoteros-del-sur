@@ -287,6 +287,42 @@
             color: #555;
             font-size: 0.8rem;
         }
+
+        /* =========================================
+           ADAPTACIÓN RESPONSIVE (MÓVILES Y TABLETS)
+           ========================================= */
+        @media (max-width: 991px) {
+            .hero-seccion {
+                padding: 110px 0 40px 0;
+            }
+            .hero-seccion h1 {
+                font-size: 3.2rem;
+            }
+            .contacto {
+                padding: 30px 25px;
+                margin-bottom: 60px;
+            }
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+                gap: 15px;
+            }
+            .navbar-toggler {
+                border-color: var(--color-naranja);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-seccion h1 {
+                font-size: 2.4rem;
+            }
+            .contacto h2 {
+                font-size: 1.5rem;
+            }
+            .contacto {
+                padding: 25px 15px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -319,10 +355,10 @@
 <section class="hero-seccion container">
     <span>Contacto</span>
     <h1>Escríbenos</h1>
-    <p class="text-secondary col-md-6 mx-auto">¿Tienes dudas, sugerencias o quieres rodar con nosotros? Ponte en contacto.</p>
+    <p class="text-secondary col-md-6 mx-auto px-3">¿Tienes dudas, sugerencias o quieres rodar con nosotros? Ponte en contacto.</p>
 </section>
 
-<main class="container">
+<main class="container px-3">
     <div class="contacto">
         <h2 class="text-center mb-4"><i class="fa-regular fa-envelope text-warning me-2"></i> Contacta con nosotros</h2>
         

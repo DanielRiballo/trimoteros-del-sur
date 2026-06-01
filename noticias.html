@@ -260,6 +260,54 @@
             color: #555;
             font-size: 0.8rem;
         }
+
+        /* =========================================
+           ADAPTACIÓN RESPONSIVE (MÓVILES Y TABLETS)
+           ========================================= */
+
+        /* Tablets y pantallas medianas (hasta 991px) */
+        @media (max-width: 991px) {
+            .hero-seccion {
+                padding: 80px 0 40px 0;
+                margin-top: 75px;
+            }
+            .hero-seccion h1 {
+                font-size: 3.2rem;
+            }
+            .seccion-tag {
+                margin-bottom: 20px;
+            }
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+                gap: 15px;
+            }
+            .navbar-toggler {
+                border-color: var(--color-naranja);
+            }
+        }
+
+        /* Móviles (hasta 768px) */
+        @media (max-width: 768px) {
+            .hero-seccion {
+                padding: 60px 0 30px 0;
+            }
+            .hero-seccion h1 {
+                font-size: 2.4rem;
+            }
+            .hero-seccion p {
+                font-size: 0.95rem;
+            }
+            .card-noticia {
+                padding: 20px;
+            }
+            .card-noticia h3 {
+                font-size: 1.25rem;
+            }
+            .card-noticia p {
+                margin-bottom: 15px;
+            }
+        }
     </style>
 </head>
 <body>

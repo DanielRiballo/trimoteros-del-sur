@@ -320,6 +320,65 @@
             color: #555;
             font-size: 0.8rem;
         }
+
+        /* =========================================
+           ADAPTACIÓN RESPONSIVE (MÓVILES Y TABLETS)
+           ========================================= */
+
+        /* Tablets y móviles grandes (hasta 991px) */
+        @media (max-width: 991px) {
+            .hero-seccion h1 {
+                font-size: 3.5rem;
+            }
+            .hero-seccion {
+                padding: 100px 0 50px 0;
+            }
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+                gap: 15px;
+            }
+            .navbar-toggler {
+                border-color: var(--color-naranja);
+            }
+            /* Adaptación del menú de filtros para que no se desborde */
+            .filtro-container {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            .filtro-container .ms-auto {
+                margin-left: 0 !important;
+                width: 100%;
+                text-align: center;
+                margin-top: 10px;
+            }
+        }
+
+        /* Móviles (hasta 768px) */
+        @media (max-width: 768px) {
+            .hero-seccion h1 {
+                font-size: 2.8rem;
+            }
+            .hero-seccion {
+                padding: 80px 0 40px 0;
+                margin-top: 70px;
+            }
+            .filtro-container {
+                gap: 10px;
+            }
+            .btn-filtro {
+                padding: 6px 15px;
+                font-size: 0.75rem;
+            }
+            .card-ruta {
+                padding: 20px;
+            }
+            /* Acomodar la info de la ruta si la pantalla es muy estrecha */
+            .ruta-meta {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
     </style>
 </head>
 <body>

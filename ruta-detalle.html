@@ -258,6 +258,60 @@
             color: #555;
             font-size: 0.8rem;
         }
+
+        /* =========================================
+           ADAPTACIÓN RESPONSIVE (MÓVILES Y TABLETS)
+           ========================================= */
+
+        /* Tablets y pantallas medianas (hasta 991px) */
+        @media (max-width: 991px) {
+            .hero-ruta {
+                height: 45vh;
+            }
+            .hero-ruta h1 {
+                font-size: 2.8rem;
+            }
+            .section-padding {
+                padding: 45px 0;
+            }
+            /* Desactivamos el comportamiento sticky en tablets/móviles ya que la columna cae abajo */
+            .info-panel.sticky-top {
+                position: static !important;
+                margin-top: 30px;
+            }
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+                gap: 15px;
+            }
+            .navbar-toggler {
+                border-color: var(--color-naranja);
+            }
+        }
+
+        /* Móviles (hasta 768px) */
+        @media (max-width: 768px) {
+            .hero-ruta {
+                height: 40vh;
+                margin-top: 75px;
+            }
+            .hero-ruta h1 {
+                font-size: 2rem;
+            }
+            .hero-ruta .lead {
+                font-size: 1rem !important;
+            }
+            .foto-placeholder {
+                height: 200px;
+            }
+            /* Reducimos el contenedor panorámico grande en móviles */
+            .foto-placeholder[style*="height: 350px"] {
+                height: 220px !important;
+            }
+            .info-panel {
+                padding: 20px;
+            }
+        }
     </style>
 </head>
 <body>
