@@ -29,7 +29,7 @@
         .navbar {
             background: rgba(0, 0, 0, 0.9);
             border-bottom: 1px solid var(--color-borde);
-            padding: 10px 0; /* Ajustado sutilmente para acomodar el logo más grande */
+            padding: 10px 0;
         }
         .navbar-brand {
             font-weight: 800;
@@ -143,7 +143,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(10, 10, 10, 0.45); /* Capa reducida a 0.45 para aclarar el fondo considerablemente */
+            background: rgba(10, 10, 10, 0.45);
             background-image: linear-gradient(rgba(255,140,0,0.05) 1px, transparent 1px),
             linear-gradient(90deg, rgba(255,140,0,0.05) 1px, transparent 1px);
             background-size: 50px 50px;
@@ -156,7 +156,7 @@
             width: 100%;
             max-width: 900px;
             padding: 0 20px;
-            text-shadow: 0 4px 15px rgba(0, 0, 0, 0.8); /* Sombra añadida al texto para garantizar una perfecta lectura sobre el fondo más claro */
+            text-shadow: 0 4px 15px rgba(0, 0, 0, 0.8);
         }
         .badge-hero {
             border: 1px solid rgba(255, 140, 0, 0.5);
@@ -181,7 +181,7 @@
         }
         .hero p {
             font-size: 1.2rem;
-            color: #ffffff; /* Texto cambiado a blanco puro para máxima legibilidad */
+            color: #ffffff;
             margin-bottom: 40px;
         }
 
@@ -222,6 +222,9 @@
             transition: 0.3s;
             position: relative;
             overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
         .card-custom:hover {
             border-color: var(--color-naranja);
@@ -236,9 +239,11 @@
             font-weight: 700;
             letter-spacing: 1px;
         }
-        .card-custom h4 {
+        .card-custom h4, .card-custom h3 {
+            font-size: 1.5rem;
             font-weight: 800;
             margin: 20px 0 15px 0;
+            text-transform: uppercase;
         }
         .card-custom p {
             color: var(--color-gris);
@@ -264,11 +269,43 @@
             color: white;
         }
 
+        /* METAS Y TAGS SARTEN DE TU NUEVA ESTRUCTURA */
+        .ruta-meta {
+            display: flex;
+            gap: 20px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            margin: 15px 0;
+            border-bottom: 1px solid #161616;
+            padding-bottom: 15px;
+            color: var(--color-gris);
+        }
+        .ruta-meta i { color: var(--color-naranja); }
+        .ruta-tags { display: flex; gap: 8px; margin-bottom: 20px; flex-wrap: wrap; }
+        .tag-pueblo { background: #111; border: 1px solid #1c1c1c; color: #777; padding: 3px 10px; border-radius: 4px; font-size: 0.75rem; font-weight: 600; }
+        
+        /* ESTILO PARA EL BOTÓN VER RUTA */
+        .btn-ver-ruta {
+            color: var(--color-naranja);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            transition: 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .btn-ver-ruta:hover {
+            color: white;
+        }
+
         /* COLORES DE BADGES */
         .badge-media { border-color: rgba(255,140,0,0.5); color: var(--color-naranja); }
         .badge-facil { border-color: rgba(40,167,69,0.5); color: #28a745; }
         .badge-dificil { border-color: rgba(220,53,69,0.5); color: #dc3545; }
         .badge-club { border-color: rgba(255,140,0,0.5); color: var(--color-naranja); }
+        .badge-aniversario { border-color: rgba(220, 53, 69, 0.6); color: #ff4444; background: rgba(220, 53, 69, 0.05); }
 
         /* CTA (¿Eres Trimotero?) */
         .cta-section {
@@ -345,69 +382,26 @@
             font-size: 0.8rem;
         }
 
-        /* =========================================
-           ADAPTACIÓN RESPONSIVE (MÓVILES Y TABLETS)
-           ========================================= */
-
-        /* Tablets y móviles grandes (hasta 991px) */
+        /* RESPONSIVE */
         @media (max-width: 991px) {
-            .hero h1 {
-                font-size: 3.5rem;
-            }
-            .section-padding {
-                padding: 80px 0;
-            }
-            .footer-bottom {
-                flex-direction: column;
-                text-align: center;
-                gap: 15px;
-            }
-            .navbar-toggler {
-                border-color: var(--color-naranja);
-            }
+            .hero h1 { font-size: 3.5rem; }
+            .section-padding { padding: 80px 0; }
+            .footer-bottom { flex-direction: column; text-align: center; gap: 15px; }
+            .navbar-toggler { border-color: var(--color-naranja); }
         }
 
-        /* Móviles (hasta 768px) */
         @media (max-width: 768px) {
-            .hero-bg {
-                flex-direction: column;
-            }
-            .hero-left, .hero-right {
-                width: 100%;
-                height: 50%;
-            }
-            .hero h1 {
-                font-size: 2.8rem;
-                margin-top: 10px;
-            }
-            .hero p {
-                font-size: 1rem;
-                margin-bottom: 25px;
-            }
-            .hero-content .d-flex.justify-content-center {
-                flex-direction: column;
-                gap: 15px !important;
-            }
-            .hero-content .btn {
-                width: 100%;
-            }
-            .section-padding {
-                padding: 60px 0;
-            }
-            .section-title {
-                font-size: 2rem;
-            }
-            .d-flex.justify-content-between.align-items-end {
-                flex-direction: column;
-                align-items: flex-start !important;
-                gap: 15px;
-            }
-            .cta-section {
-                padding: 80px 20px;
-            }
-            .cta-section h2 {
-                font-size: 2.5rem;
-            }
+            .hero-bg { flex-direction: column; }
+            .hero-left, .hero-right { width: 100%; height: 50%; }
+            .hero h1 { font-size: 2.8rem; margin-top: 10px; }
+            .hero p { font-size: 1rem; margin-bottom: 25px; }
+            .hero-content .d-flex.justify-content-center { flex-direction: column; gap: 15px !important; }
+            .hero-content .btn { width: 100%; }
+            .section-padding { padding: 60px 0; }
+            .section-title { font-size: 2rem; }
+            .d-flex.justify-content-between.align-items-end { flex-direction: column; align-items: flex-start !important; gap: 15px; }
+            .cta-section { padding: 80px 20px; }
+            .cta-section h2 { font-size: 2.5rem; }
         }
     </style>
 </head>
@@ -477,20 +471,48 @@
     </div>
 
     <div class="row g-4">
-        <div class="col-md-4">
+        <div class="col-lg-4 col-md-6">
+            <div class="card-custom">
+                <div>
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                        <span class="card-badge badge-aniversario">🎉 Especial</span>
+                        <span class="text-secondary small"><i class="fa-solid fa-star me-1"></i> Club Oficial</span>
+                    </div>
+                    <h3 class="text-warning">Ruta 1º Aniversario</h3>
+                    <p>Celebramos nuestro primer año rodando juntos por todo lo alto con un itinerario único y actividades programadas.</p>
+                </div>
+                <div>
+                    <div class="ruta-meta">
+                        <span><i class="fa-solid fa-location-arrow me-1"></i> 100 km</span>
+                        <span><i class="fa-regular fa-clock me-1"></i> 2-3 h</span>
+                    </div>
+                    <div class="ruta-tags">
+                        <span class="tag-pueblo">Aniversario</span>
+                        <span class="tag-pueblo">Almuerzo</span>
+                        <span class="tag-pueblo">Ruta</span>
+                    </div>
+                    <div class="card-bottom">
+                        <a href="ruta-1-aniversario.html" class="btn-ver-ruta">Ver ruta completa <i class="fa-solid fa-chevron-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div> 
+
+        <div class="col-lg-4 col-md-6">
             <div class="card-custom">
                 <div class="d-flex justify-content-between align-items-center mb-2">
                     <span class="card-badge badge-media">MEDIA</span>
                     <span class="text-secondary small"><i class="fa-solid fa-location-dot me-1"></i> Montaña</span>
                 </div>
-                <h4 class="text-warning">Ruta de las Alpujarras</h4>
+                <h4 class="text-white">Ruta de las Alpujarras</h4>
                 <p>Un viaje épico por los pueblos blancos de Sierra Nevada, con vistas que quitan el aliento.</p>
                 <div class="card-bottom">
                     <i class="fa-regular fa-paper-plane"></i> 180 km
                 </div>
             </div>
         </div>
-        <div class="col-md-4">
+
+        <div class="col-lg-4 col-md-6">
             <div class="card-custom">
                 <div class="d-flex justify-content-between align-items-center mb-2">
                     <span class="card-badge badge-facil">FÁCIL</span>
@@ -500,19 +522,6 @@
                 <p>De Málaga a Estepona por la N-340, disfrutando del mar y el sol del sur.</p>
                 <div class="card-bottom">
                     <i class="fa-regular fa-paper-plane"></i> 120 km
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="card-custom">
-                <div class="d-flex justify-content-between align-items-center mb-2">
-                    <span class="card-badge badge-dificil">DIFÍCIL</span>
-                    <span class="text-secondary small"><i class="fa-solid fa-location-dot me-1"></i> Alta Montaña</span>
-                </div>
-                <h4 class="text-white">Sierra Nevada Extrema</h4>
-                <p>Para los valientes. Ascenso al puerto de La Ragua y vuelta espectacular por Guadix.</p>
-                <div class="card-bottom">
-                    <i class="fa-regular fa-paper-plane"></i> 250 km
                 </div>
             </div>
         </div>
@@ -536,7 +545,7 @@
                     <span class="text-secondary small">Mayo 2025</span>
                 </div>
                 <h4 class="text-white">¡Trimoteros del Sur ha nacido!</h4>
-                <p>Con 23 fundadores y mucha ilusión, arrancamos este proyecto que cambiará el paisaje motorista del sur.</p>
+                <p>Con 23 fundadores y mucha ilusión, arrancamos este projecto que cambiará el paisaje motorista del sur.</p>
                 <div class="card-bottom">
                     <a href="#">LEER MÁS &rarr;</a>
                 </div>
