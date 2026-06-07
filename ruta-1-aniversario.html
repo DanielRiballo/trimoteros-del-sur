@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>1º Aniversario en Ronda - Trimoteros del Sur</title>
+    <title>1º Aniversario en Ronda | Trimoteros del Sur</title>
     
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
@@ -15,7 +15,8 @@
             --color-naranja: #ff8c00;
             --color-naranja-claro: #ffb347;
             --color-gris: #a0a0a0;
-            --color-borde: #222;
+            --color-borde: #161616;
+            --color-tarjeta: #0d0d0d;
         }
 
         body {
@@ -25,11 +26,12 @@
             overflow-x: hidden;
         }
 
-        /* NAVBAR */
+        /* NAVBAR (IDÉNTICO Y OPTIMIZADO) */
         .navbar {
             background: rgba(0, 0, 0, 0.9);
             border-bottom: 1px solid var(--color-borde);
             padding: 10px 0;
+            backdrop-filter: blur(10px);
         }
         .navbar-brand {
             font-weight: 800;
@@ -115,7 +117,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(10, 10, 10, 0.55);
+            background: linear-gradient(to bottom, rgba(5, 5, 5, 0.4), var(--color-fondo));
             z-index: 1;
         }
         .hero-ruta-content {
@@ -125,7 +127,6 @@
             width: 100%;
             max-width: 900px;
             padding: 0 20px;
-            text-shadow: 0 4px 15px rgba(0, 0, 0, 0.8);
         }
         .hero-ruta h1 {
             font-size: 3.8rem;
@@ -135,16 +136,19 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             margin-bottom: 15px;
+            letter-spacing: -1px;
         }
         .card-badge {
-            border: 1px solid rgba(255,140,0,0.5); 
-            color: var(--color-naranja);
-            padding: 5px 12px;
+            background: rgba(255, 140, 0, 0.1);
+            border: 1px solid rgba(255, 140, 0, 0.3); 
+            color: var(--color-naranja-claro);
+            padding: 6px 14px;
             border-radius: 4px;
             font-size: 0.75rem;
             font-weight: 700;
-            letter-spacing: 1px;
+            letter-spacing: 1.5px;
             display: inline-block;
+            text-transform: uppercase;
         }
 
         /* DISEÑO DE CONTENIDO */
@@ -152,13 +156,13 @@
             padding: 70px 0;
         }
         .info-panel {
-            background: #0d0d0d;
+            background: var(--color-tarjeta);
             border: 1px solid var(--color-borde);
             border-radius: 8px;
             padding: 30px;
         }
         .meta-item {
-            border-bottom: 1px solid #1a1a1a;
+            border-bottom: 1px solid var(--color-borde);
             padding: 15px 0;
             display: flex;
             justify-content: space-between;
@@ -169,45 +173,55 @@
         }
         .meta-label {
             color: var(--color-gris);
-            font-weight: 600;
+            font-weight: 700;
             text-transform: uppercase;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
+            letter-spacing: 0.5px;
         }
         .meta-value {
-            color: var(--color-naranja);
+            color: white;
             font-weight: 800;
+            font-size: 0.95rem;
+        }
+        .meta-value.highlight {
+            color: var(--color-naranja);
         }
 
         /* CONTENEDORES PARA FOTOS Y MAPA */
         .foto-container {
-            background: #0d0d0d;
+            background: var(--color-tarjeta);
             border: 1px solid var(--color-borde);
             border-radius: 8px;
             overflow: hidden;
             position: relative;
-            margin-bottom: 20px;
+            margin-bottom: 24px;
+            transition: 0.3s;
+        }
+        .foto-container:hover {
+            border-color: var(--color-naranja);
+            box-shadow: 0 0 20px rgba(255, 140, 0, 0.1);
         }
         .foto-container img {
             width: 100%;
-            height: 250px;
+            height: 260px;
             object-fit: cover;
             transition: 0.5s ease;
             opacity: 0.8;
         }
         .foto-container:hover img {
-            transform: scale(1.03);
+            transform: scale(1.02);
             opacity: 1;
         }
         .foto-info {
-            padding: 15px;
-            background: #0d0d0d;
+            padding: 20px;
+            background: var(--color-tarjeta);
             border-top: 1px solid var(--color-borde);
         }
         .map-container {
             border: 1px solid var(--color-borde);
             border-radius: 8px;
             overflow: hidden;
-            background: #0d0d0d;
+            background: var(--color-tarjeta);
             height: 450px;
         }
         .map-container iframe {
@@ -216,7 +230,7 @@
             border: 0;
         }
 
-        /* FOOTER */
+        /* FOOTER (IDÉNTICO Y PERPETUO) */
         footer {
             background: #000;
             border-top: 1px solid var(--color-borde);
@@ -300,6 +314,9 @@
                 text-align: center;
                 gap: 15px;
             }
+            .navbar-toggler {
+                border-color: var(--color-naranja);
+            }
         }
         @media (max-width: 768px) {
             .hero-ruta {
@@ -307,10 +324,10 @@
                 margin-top: 75px;
             }
             .hero-ruta h1 {
-                font-size: 2rem;
+                font-size: 2.2rem;
             }
             .foto-container img {
-                height: 200px;
+                height: 220px;
             }
             .map-container {
                 height: 320px;
@@ -351,13 +368,13 @@
     </div>
     <div class="hero-ruta-overlay"></div>
     <div class="hero-ruta-content">
-        <div class="card-badge mb-3"><i class="fa-solid fa-cake-candles me-1"></i> RUTA OFICIAL </div>
-        <h1>1º Aniversario Trimoteros del sur</h1>
-        <p class="lead text-white-50 fs-5">Ruta circular de celebración por los parajes más impresionantes de la Serranía de Ronda.</p>
+        <div class="card-badge mb-3"><i class="fa-solid fa-cake-candles me-1"></i> Ruta Oficial</div>
+        <h1>1º Aniversario Trimoteros del Sur</h1>
+        <p class="lead text-secondary fs-5 col-md-10 mx-auto">Ruta circular de celebración por los parajes más impresionantes de la Serranía de Ronda.</p>
     </div>
 </section>
 
-<section class="section-padding container">
+<section class="section-padding container px-3">
     <div class="row g-5">
         
         <div class="col-lg-8">
@@ -381,7 +398,7 @@
             </div>
 
             <h3 class="mb-4 text-uppercase fw-bold text-warning" style="letter-spacing: 1px;"><i class="fa-solid fa-camera me-2"></i>Zonas Oficiales para Fotos</h3>
-            <div class="row g-3">
+            <div class="row g-4">
                 <div class="col-md-6">
                     <div class="foto-container">
                         <img src="img/foto castillo cañete.jpg" alt="Castillo de Cañete la Real">
@@ -404,7 +421,7 @@
                 
                 <div class="col-md-12">
                     <div class="foto-container">
-                        <img src="img/setenil de la bodega.jpg" alt="Setenil de las Bodegas" style="height: 300px;">
+                        <img src="img/setenil de la bodega.jpg" alt="Setenil de las Bodegas" style="height: 320px;">
                         <div class="foto-info">
                             <span class="small text-warning fw-bold">3. Setenil de las Bodegas</span><br>
                             <span class="text-secondary" style="font-size: 0.75rem;">Parada fotográfica grupal obligatoria bajo las espectaculares formaciones de roca natural de las calles.</span>
@@ -416,11 +433,11 @@
 
         <div class="col-lg-4">
             <div class="info-panel sticky-top" style="top: 110px; z-index: 10;">
-                <h4 class="mb-4 text-uppercase fw-extrabold text-white" style="font-weight: 800;">Ficha de Ruta</h4>
+                <h4 class="mb-4 text-uppercase text-white" style="font-weight: 800;">Ficha de Ruta</h4>
                 
                 <div class="meta-item">
                     <span class="meta-label"><i class="fa-solid fa-location-dot me-2 text-warning"></i> Región</span>
-                    <span class="meta-value text-warning">RONDA "MÁLAGA" </span>
+                    <span class="meta-value highlight">Ronda (Málaga)</span>
                 </div>
                 <div class="meta-item">
                     <span class="meta-label"><i class="fa-solid fa-flag-checkered me-2"></i> Inicio y Fin</span>
@@ -436,11 +453,11 @@
                 </div>
                 <div class="meta-item">
                     <span class="meta-label"><i class="fa-solid fa-gauge me-2"></i> Dificultad</span>
-                    <span class="meta-value text-warning">MEDIA</span>
+                    <span class="meta-value highlight">MEDIA</span>
                 </div>
 
                 <div class="mt-4 pt-2">
-                    <a href="rutas.html" class="btn btn-outline-secondary w-100 text-uppercase fw-bold text-white border-secondary" style="font-size: 0.85rem;"><i class="fa-solid fa-arrow-left me-2"></i> Volver a rutas</a>
+                    <a href="rutas.html" class="btn btn-outline-secondary w-100 text-uppercase fw-bold text-white border-secondary" style="font-size: 0.85rem; transition: 0.3s;"><i class="fa-solid fa-arrow-left me-2"></i> Volver a rutas</a>
                 </div>
             </div>
         </div>
@@ -490,7 +507,7 @@
         </div>
 
         <div class="footer-bottom">
-            <div>© 2025 Trimoteros del Sur. Todos los derechos reservados.</div>
+            <div>© 2026 Trimoteros del Sur. Todos los derechos reservados.</div>
             <div>HECHO CON FUEGO Y GASOLINA</div>
         </div>
     </div>

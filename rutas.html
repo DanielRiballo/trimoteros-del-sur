@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nuestras Rutas - Trimoteros del Sur</title>
+    <title>Nuestras Rutas | Trimoteros del Sur</title>
     
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
@@ -15,7 +15,8 @@
             --color-naranja: #ff8c00;
             --color-naranja-claro: #ffb347;
             --color-gris: #a0a0a0;
-            --color-borde: #222;
+            --color-borde: #161616;
+            --color-tarjeta: #0d0d0d;
         }
 
         body {
@@ -30,6 +31,7 @@
             background: rgba(0, 0, 0, 0.9);
             border-bottom: 1px solid var(--color-borde);
             padding: 10px 0;
+            backdrop-filter: blur(10px);
         }
         .navbar-brand {
             font-weight: 800;
@@ -86,12 +88,16 @@
             color: black;
         }
 
-        /* HERO SECCIÓN RUTAS */
+        /* HERO SECCIÓN (Efecto Cuadrícula Coherente) */
         .hero-seccion {
-            padding: 120px 0 60px 0;
+            padding: 140px 0 50px 0;
             text-align: center;
-            background: linear-gradient(to bottom, rgba(20,20,20,0.4), var(--color-fondo));
-            margin-top: 85px;
+            background-image: 
+                linear-gradient(to bottom, rgba(5,5,5,0.3), var(--color-fondo)),
+                linear-gradient(to right, rgba(255,140,0,0.04) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255,140,0,0.04) 1px, transparent 1px);
+            background-size: 100% 100%, 45px 45px, 45px 45px;
+            margin-top: 40px;
         }
         .hero-seccion span {
             color: var(--color-naranja);
@@ -114,10 +120,11 @@
         .filtro-container {
             display: flex;
             align-items: center;
+            justify-content: center;
             gap: 15px;
             margin-bottom: 50px;
-            border-bottom: 1px solid #111;
-            padding-bottom: 20px;
+            border-bottom: 1px solid var(--color-borde);
+            padding-bottom: 25px;
         }
         .filtro-label {
             color: #555;
@@ -127,10 +134,10 @@
             letter-spacing: 1px;
         }
         .btn-filtro {
-            background: #0d0d0d;
+            background: var(--color-tarjeta);
             border: 1px solid var(--color-borde);
             color: white;
-            padding: 6px 20px;
+            padding: 8px 20px;
             border-radius: 4px;
             font-size: 0.8rem;
             font-weight: 700;
@@ -141,11 +148,12 @@
             background: var(--color-naranja);
             color: black;
             border-color: var(--color-naranja);
+            box-shadow: 0 0 12px rgba(255, 140, 0, 0.2);
         }
 
         /* TARJETAS DE RUTA */
         .card-ruta {
-            background: #0d0d0d;
+            background: var(--color-tarjeta);
             border: 1px solid var(--color-borde);
             border-radius: 8px;
             padding: 30px;
@@ -174,20 +182,22 @@
             font-weight: 700;
             text-transform: uppercase;
         }
-        .badge-dificultad.aniversario { background: rgba(220, 53, 69, 0.2); color: #ff4444; border: 1px solid rgba(220, 53, 69, 0.4); }
-        .badge-dificultad.facil { background: rgba(25, 135, 84, 0.2); color: #198754; border: 1px solid rgba(25, 135, 84, 0.3); }
-        .badge-dificultad.media { background: rgba(255, 140, 0, 0.2); color: var(--color-naranja); border: 1px solid rgba(255, 140, 0, 0.3); }
-        .badge-dificultad.dificil { background: rgba(111, 66, 193, 0.2); color: #6f42c1; border: 1px solid rgba(111, 66, 193, 0.3); }
+        .badge-dificultad.aniversario { background: rgba(220, 53, 69, 0.15); color: #ff4444; border: 1px solid rgba(220, 53, 69, 0.3); }
+        .badge-dificultad.facil { background: rgba(25, 135, 84, 0.15); color: #23a968; border: 1px solid rgba(25, 135, 84, 0.2); }
+        .badge-dificultad.media { background: rgba(255, 140, 0, 0.15); color: var(--color-naranja); border: 1px solid rgba(255, 140, 0, 0.2); }
+        .badge-dificultad.dificil { background: rgba(111, 66, 193, 0.15); color: #8c68cd; border: 1px solid rgba(111, 66, 193, 0.2); }
         
         .ruta-tipo {
             color: var(--color-gris);
             font-size: 0.8rem;
         }
         .card-ruta h3 {
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             font-weight: 800;
             margin-bottom: 15px;
             color: white;
+            text-transform: uppercase;
+            letter-spacing: -0.5px;
         }
         .card-ruta p {
             color: var(--color-gris);
@@ -202,7 +212,7 @@
             font-weight: 700;
             color: white;
             margin-bottom: 25px;
-            border-bottom: 1px solid #1a1a1a;
+            border-bottom: 1px solid #161616;
             padding-bottom: 15px;
         }
         .ruta-meta i {
@@ -215,8 +225,9 @@
             flex-wrap: wrap;
         }
         .tag-pueblo {
-            background: #161616;
-            color: #666;
+            background: #111;
+            border: 1px solid #1c1c1c;
+            color: #777;
             padding: 3px 10px;
             border-radius: 4px;
             font-size: 0.75rem;
@@ -243,7 +254,7 @@
         .banner-comunidad {
             text-align: center;
             padding: 80px 0;
-            border-top: 1px solid #111;
+            border-top: 1px solid var(--color-borde);
             margin-top: 50px;
         }
         .banner-comunidad p {
@@ -257,6 +268,11 @@
             font-weight: 800;
             text-transform: uppercase;
             letter-spacing: 1px;
+            transition: 0.3s;
+        }
+        .banner-comunidad a:hover {
+            color: var(--color-naranja-claro);
+            text-shadow: 0 0 10px rgba(255,140,0,0.3);
         }
 
         /* FOOTER (IDÉNTICO) */
@@ -322,23 +338,42 @@
             font-size: 0.8rem;
         }
 
-        /* ADAPTACIÓN RESPONSIVE */
+        /* =========================================
+           ADAPTACIÓN RESPONSIVE (MÓVILES Y TABLETS)
+           ========================================= */
         @media (max-width: 991px) {
-            .hero-seccion h1 { font-size: 3.5rem; }
-            .hero-seccion { padding: 100px 0 50px 0; }
-            .footer-bottom { flex-direction: column; text-align: center; gap: 15px; }
-            .navbar-toggler { border-color: var(--color-naranja); }
-            .filtro-container { flex-wrap: wrap; justify-content: center; }
-            .filtro-container .ms-auto { margin-left: 0 !important; width: 100%; text-align: center; margin-top: 10px; }
+            .hero-seccion {
+                padding: 110px 0 40px 0;
+            }
+            .hero-seccion h1 {
+                font-size: 3.2rem;
+            }
+            .filtro-container {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 10px;
+            }
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+                gap: 15px;
+            }
+            .navbar-toggler {
+                border-color: var(--color-naranja);
+            }
         }
 
         @media (max-width: 768px) {
-            .hero-seccion h1 { font-size: 2.8rem; }
-            .hero-seccion { padding: 80px 0 40px 0; margin-top: 70px; }
-            .filtro-container { gap: 10px; }
-            .btn-filtro { padding: 6px 15px; font-size: 0.75rem; }
-            .card-ruta { padding: 20px; }
-            .ruta-meta { flex-direction: column; gap: 10px; }
+            .hero-seccion h1 {
+                font-size: 2.4rem;
+            }
+            .card-ruta {
+                padding: 25px 20px;
+            }
+            .ruta-meta {
+                flex-direction: column;
+                gap: 10px;
+            }
         }
     </style>
 </head>
@@ -372,13 +407,16 @@
 <section class="hero-seccion container">
     <span>Nuestras Rutas</span>
     <h1>Rutas</h1>
-    <p class="text-secondary col-md-6 mx-auto">Cada carretera es una historia. Aquí están las nuestras.</p>
+    <p class="text-secondary col-md-6 mx-auto px-3">Cada carretera es una historia. Aquí están las nuestras.</p>
 </section>
 
-<main class="container">
+<main class="container px-3">
     
+   
+
     <div class="row g-4">
         
+        <!-- RUTA 1 -->
         <div class="col-lg-4 col-md-6">
             <div class="card-ruta">
                 <div>
@@ -386,8 +424,8 @@
                         <span class="badge-dificultad aniversario">🎉 Especial</span>
                         <span class="ruta-tipo"><i class="fa-solid fa-star me-1"></i> Club Oficial</span>
                     </div>
-                    <h3>Ruta 1º Aniversario trimoteros del sur</h3>
-                    <p>Celebramos nuestro primer año rodando juntos por todo lo alto.</p>
+                    <h3>Ruta 1º Aniversario</h3>
+                    <p>Celebramos nuestro primer año rodando juntos por todo lo alto con un itinerario único y actividades programadas.</p>
                 </div>
                 <div>
                     <div class="ruta-meta">
@@ -397,13 +435,14 @@
                     <div class="ruta-tags">
                         <span class="tag-pueblo">Aniversario</span>
                         <span class="tag-pueblo">Almuerzo</span>
-                        <span class="tag-pueblo">Sorteo</span>
+                        <span class="tag-pueblo">Ruta</span>
                     </div>
                     <a href="ruta-1-aniversario.html" class="btn-ver-ruta">Ver ruta completa <i class="fa-solid fa-chevron-right"></i></a>
                 </div>
             </div>
         </div>
 
+        <!-- RUTA 2 -->
         <div class="col-lg-4 col-md-6">
             <div class="card-ruta">
                 <div>
@@ -429,6 +468,7 @@
             </div>
         </div>
 
+        <!-- RUTA 3 -->
         <div class="col-lg-4 col-md-6">
             <div class="card-ruta">
                 <div>
@@ -437,7 +477,7 @@
                         <span class="ruta-tipo"><i class="fa-solid fa-water me-1"></i> Costera</span>
                     </div>
                     <h3>Costa del Sol Express</h3>
-                    <p>De Málaga a Estepona abrazando la Costa del Sol. El Mediterráneo a tu izquierda durante todo el trayecto.</p>
+                    <p>De Málaga a Estepona abrazando la Costa del Sol. El mar Mediterráneo a tu izquierda durante todo el trayecto.</p>
                 </div>
                 <div>
                     <div class="ruta-meta">
@@ -454,6 +494,7 @@
             </div>
         </div>
 
+        <!-- RUTA 4 -->
         <div class="col-lg-4 col-md-6">
             <div class="card-ruta">
                 <div>
@@ -462,7 +503,7 @@
                         <span class="ruta-tipo"><i class="fa-solid fa-mountain me-1"></i> Alta Montaña</span>
                     </div>
                     <h3>Sierra Nevada Extrema</h3>
-                    <p>Para los valientes. Ascenso al puerto de La Ragua (2.041 m) y bajada espectacular hacia el desierto de Guadix.</p>
+                    <p>Para los más experimentados. Ascenso directo al mítico puerto de La Ragua (2.041 m) y bajada técnica hacia el desierto.</p>
                 </div>
                 <div>
                     <div class="ruta-meta">
@@ -470,7 +511,7 @@
                         <span><i class="fa-regular fa-clock me-1"></i> 6-7 h</span>
                     </div>
                     <div class="ruta-tags">
-                        <span class="tag-pueblo">Puerto de La Ragua</span>
+                        <span class="tag-pueblo">P. La Ragua</span>
                         <span class="tag-pueblo">Guadix</span>
                         <span class="tag-pueblo">Baza</span>
                     </div>
@@ -482,8 +523,8 @@
     </div>
 
     <div class="banner-comunidad">
-        <p>¿Conoces una ruta que debería estar aquí?</p>
-        <a href="contacto.html">Sugiérela a la comunidad →</a>
+        <p>¿Conoces una ruta espectacular que debería estar en esta lista?</p>
+        <a href="contacto.html">Sugiérela a la comunidad <i class="fa-solid fa-arrow-right ms-1"></i></a>
     </div>
 </main>
 
@@ -529,7 +570,7 @@
         </div>
 
         <div class="footer-bottom">
-            <div>© 2025 Trimoteros del Sur. Todos los derechos reservados.</div>
+            <div>© 2026 Trimoteros del Sur. Todos los derechos reservados.</div>
             <div>HECHO CON FUEGO Y GASOLINA</div>
         </div>
     </div>
