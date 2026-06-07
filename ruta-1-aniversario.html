@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1º Aniversario en Ronda - Trimoteros del Sur</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --color-fondo: #050505;
+            --color-naranja: #ff8c00;
+            --color-naranja-claro: #ffb347;
+            --color-gris: #a0a0a0;
+            --color-borde: #222;
+        }
+
+        body {
+            background-color: var(--color-fondo);
+            color: white;
+            font-family: 'Montserrat', sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* NAVBAR */
+        .navbar {
+            background: rgba(0, 0, 0, 0.9);
+            border-bottom: 1px solid var(--color-borde);
+            padding: 10px 0;
+        }
+        .navbar-brand {
+            font-weight: 800;
+            letter-spacing: 1px;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+        }
+        .navbar-brand span {
+            font-size: 0.7rem;
+            display: block;
+            color: var(--color-gris);
+            font-weight: 400;
+        }
+        .nav-link {
+            color: white !important;
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin: 0 10px;
+            text-transform: uppercase;
+            transition: 0.3s;
+        }
+        .nav-link:hover {
+            color: var(--color-naranja) !important;
+        }
+        .nav-item.active .nav-link {
+            color: var(--color-naranja) !important;
+            position: relative;
+        }
+        .nav-item.active .nav-link::after {
+            content: "•";
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: var(--color-naranja);
+            font-size: 1.5rem;
+        }
+
+        /* BOTONES */
+        .btn-naranja {
+            background: linear-gradient(90deg, var(--color-naranja), var(--color-naranja-claro));
+            color: black;
+            font-weight: 800;
+            text-transform: uppercase;
+            border: none;
+            padding: 10px 24px;
+            border-radius: 4px;
+            transition: 0.3s;
+        }
+        .btn-naranja:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 15px rgba(255, 140, 0, 0.5);
+            color: black;
+        }
+
+        /* HERO DE LA RUTA */
+        .hero-ruta {
+            height: 55vh;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 85px;
+        }
+        .hero-ruta-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+        }
+        .hero-ruta-bg img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .hero-ruta-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(10, 10, 10, 0.55);
+            z-index: 1;
+        }
+        .hero-ruta-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            width: 100%;
+            max-width: 900px;
+            padding: 0 20px;
+            text-shadow: 0 4px 15px rgba(0, 0, 0, 0.8);
+        }
+        .hero-ruta h1 {
+            font-size: 3.8rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            background: linear-gradient(to bottom, #ffb347, #ff8c00);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 15px;
+        }
+        .card-badge {
+            border: 1px solid rgba(255,140,0,0.5); 
+            color: var(--color-naranja);
+            padding: 5px 12px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            display: inline-block;
+        }
+
+        /* DISEÑO DE CONTENIDO */
+        .section-padding {
+            padding: 70px 0;
+        }
+        .info-panel {
+            background: #0d0d0d;
+            border: 1px solid var(--color-borde);
+            border-radius: 8px;
+            padding: 30px;
+        }
+        .meta-item {
+            border-bottom: 1px solid #1a1a1a;
+            padding: 15px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .meta-item:last-child {
+            border-bottom: none;
+        }
+        .meta-label {
+            color: var(--color-gris);
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+        }
+        .meta-value {
+            color: var(--color-naranja);
+            font-weight: 800;
+        }
+
+        /* CONTENEDORES PARA FOTOS Y MAPA */
+        .foto-container {
+            background: #0d0d0d;
+            border: 1px solid var(--color-borde);
+            border-radius: 8px;
+            overflow: hidden;
+            position: relative;
+            margin-bottom: 20px;
+        }
+        .foto-container img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            transition: 0.5s ease;
+            opacity: 0.8;
+        }
+        .foto-container:hover img {
+            transform: scale(1.03);
+            opacity: 1;
+        }
+        .foto-info {
+            padding: 15px;
+            background: #0d0d0d;
+            border-top: 1px solid var(--color-borde);
+        }
+        .map-container {
+            border: 1px solid var(--color-borde);
+            border-radius: 8px;
+            overflow: hidden;
+            background: #0d0d0d;
+            height: 450px;
+        }
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        /* FOOTER */
+        footer {
+            background: #000;
+            border-top: 1px solid var(--color-borde);
+            padding: 60px 0 30px 0;
+            margin-top: 50px;
+        }
+        .footer-title {
+            color: var(--color-naranja);
+            font-weight: 800;
+            letter-spacing: 2px;
+            font-size: 0.9rem;
+            margin-bottom: 25px;
+            text-transform: uppercase;
+        }
+        .footer-text {
+            color: var(--color-gris);
+            font-size: 0.9rem;
+            line-height: 1.8;
+        }
+        .footer-links {
+            list-style: none;
+            padding: 0;
+        }
+        .footer-links li {
+            margin-bottom: 15px;
+        }
+        .footer-links a {
+            color: var(--color-gris);
+            text-decoration: none;
+            transition: 0.3s;
+        }
+        .footer-links a:hover {
+            color: var(--color-naranja);
+        }
+        .footer-contact li {
+            margin-bottom: 15px;
+            color: var(--color-gris);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .footer-contact i {
+            color: var(--color-naranja);
+        }
+        .social-icons a {
+            color: var(--color-gris);
+            font-size: 1.2rem;
+            margin-right: 15px;
+            transition: 0.3s;
+        }
+        .social-icons a:hover {
+            color: var(--color-naranja);
+        }
+        .footer-bottom {
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 1px solid var(--color-borde);
+            display: flex;
+            justify-content: space-between;
+            color: #555;
+            font-size: 0.8rem;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 991px) {
+            .hero-ruta {
+                height: 45vh;
+            }
+            .hero-ruta h1 {
+                font-size: 2.8rem;
+            }
+            .section-padding {
+                padding: 45px 0;
+            }
+            .info-panel.sticky-top {
+                position: static !important;
+                margin-top: 30px;
+            }
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+                gap: 15px;
+            }
+        }
+        @media (max-width: 768px) {
+            .hero-ruta {
+                height: 40vh;
+                margin-top: 75px;
+            }
+            .hero-ruta h1 {
+                font-size: 2rem;
+            }
+            .foto-container img {
+                height: 200px;
+            }
+            .map-container {
+                height: 320px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg fixed-top">
+    <div class="container">
+        <a class="navbar-brand text-white" href="index.html">
+            <img src="img/logo.png" width="65" class="me-3" alt="Logo">
+            <div>
+                TRIMOTEROS
+                <span>DEL SUR</span>
+            </div>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="menu">
+            <ul class="navbar-nav mx-auto">
+                <li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>
+                <li class="nav-item active"><a class="nav-link" href="rutas.html">Rutas</a></li>
+                <li class="nav-item"><a class="nav-link" href="noticias.html">Noticias</a></li>
+                <li class="nav-item"><a class="nav-link" href="sobre-nosotros.html">Sobre Nosotros</a></li>
+                <li class="nav-item"><a class="nav-link" href="contacto.html">Contacto</a></li>
+            </ul>
+            <a href="contacto.html" class="btn btn-naranja"><i class="fa-solid fa-fire me-2"></i> Únete</a>
+        </div>
+    </div>
+</nav>
+
+<section class="hero-ruta">
+    <div class="hero-ruta-bg">
+        <img src="img/1 aniversario.png" alt="Fondo Aniversario Ronda">
+    </div>
+    <div class="hero-ruta-overlay"></div>
+    <div class="hero-ruta-content">
+        <div class="card-badge mb-3"><i class="fa-solid fa-cake-candles me-1"></i> RUTA OFICIAL </div>
+        <h1>1º Aniversario Trimoteros del sur</h1>
+        <p class="lead text-white-50 fs-5">Ruta circular de celebración por los parajes más impresionantes de la Serranía de Ronda.</p>
+    </div>
+</section>
+
+<section class="section-padding container">
+    <div class="row g-5">
+        
+        <div class="col-lg-8">
+            <h3 class="mb-4 text-uppercase fw-bold" style="letter-spacing: 1px;">Detalles del Itinerario</h3>
+            
+            <p class="text-secondary lh-lg mb-4">
+                ¡Arranca la aventura de nuestro 1º Aniversario! Para esta gran ocasión, nos reuniremos en el corazón de Ronda, punto de encuentro inicial y meta de este viaje. Desde allí, iniciaremos la marcha en dirección este cruzando paisajes espectaculares de montaña hacia el precioso pueblo de El Burgo, disfrutando de sus revueltas curvas iniciales que servirán para calentar motores en comunidad.
+            </p>
+            
+            <p class="text-secondary lh-lg mb-4">
+                Continuando con el trazado norte por la carretera de la serranía, enfilaremos nuestro camino hacia las inmediaciones de Cañete la Real. Este tramo técnico nos regalará tramos exigentes y divertidos perfectos para nuestras trimotos, rodeados por las vistas de las formaciones rocosas de la comarca del Guadalteba.
+            </p>
+
+            <p class="text-secondary lh-lg mb-5">
+                La recta final del circuito nos llevará hacia el oeste, haciendo una parada obligatoria en el emblemático pueblo de Setenil de las Bodegas, famoso por sus asombrosas casas incrustadas bajo los tajos rocosos, un rincón único donde descansaremos y capturaremos recuerdos fotográficos inigualables. Finalmente, completaremos los 100 km regresando con un curveo fluido a Ronda.
+            </p>
+
+            <h3 class="mb-4 text-uppercase fw-bold text-warning" style="letter-spacing: 1px;"><i class="fa-solid fa-map-location-dot me-2"></i>Mapa del Recorrido Completo</h3>
+            <div class="map-container mb-5">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m46!1m12!1m3!1d194216.05644997122!2d-5.228110862995563!3d36.852229343955294!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m31!3e0!4m5!1s0xd0d3143e258a279%3A0x94358021349a5ba2!2zUm9uZGEsIDI5NDAwLCBNw6FsYWdh!3m2!1d36.746209!2d-5.161225099999999!4m5!1s0xd72c916e1e86d2d%3A0x4adb2088b8dca218!2sEl%20Burgo%2C%2029420%2C%20M%C3%A1laga!3m2!1d36.7903297!2d-4.9474281!4m5!1s0xd72b37322e4ae05%3A0x8a07585c33c254da!2zQ2HDsWV0ZSBsYSBSZWFsLCAyOTM0MCwgTcOhbGFnYQ!3m2!1d36.9534194!2d-5.0253977!4m5!1s0xd0d49c8297cdd15%3A0x44842378df0ac406!2sSetenil%20de%20las%20Bodegas%2C%2011692%2C%20C%C3%A1diz!3m2!1d36.863912899999995!2d-5.181303799999999!4m5!1s0xd0d3143e258a279%3A0x94358021349a5ba2!2zUm9uZGEsIDI5NDAwLCBNw6FsYWdh!3m2!1d36.746209!2d-5.161225099999999!5e1!3m2!1ses!2ses!4v1780857611628!5m2!1ses!2ses" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+
+            <h3 class="mb-4 text-uppercase fw-bold text-warning" style="letter-spacing: 1px;"><i class="fa-solid fa-camera me-2"></i>Zonas Oficiales para Fotos</h3>
+            <div class="row g-3">
+                <div class="col-md-6">
+                    <div class="foto-container">
+                        <img src="img/foto castillo cañete.jpg" alt="Castillo de Cañete la Real">
+                        <div class="foto-info">
+                            <span class="small text-warning fw-bold">1. Castillo Medieval de Cañete la Real</span><br>
+                            <span class="text-secondary" style="font-size: 0.75rem;">Impresionante fortaleza medieval que corona el paisaje de montaña de nuestra ruta.</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6">
+                    <div class="foto-container">
+                        <img src="img/foto bar las espeñas.jpg" alt="Bar Las Peñas Cañete la Real">
+                        <div class="foto-info">
+                            <span class="small text-warning fw-bold">2. Bar Las Espeñas (Cañete la Real)</span><br>
+                            <span class="text-secondary" style="font-size: 0.75rem;">Punto oficial de parada técnica en Cañete para refrescarse y disfrutar en hermandad.</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-12">
+                    <div class="foto-container">
+                        <img src="img/setenil de la bodega.jpg" alt="Setenil de las Bodegas" style="height: 300px;">
+                        <div class="foto-info">
+                            <span class="small text-warning fw-bold">3. Setenil de las Bodegas</span><br>
+                            <span class="text-secondary" style="font-size: 0.75rem;">Parada fotográfica grupal obligatoria bajo las espectaculares formaciones de roca natural de las calles.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-4">
+            <div class="info-panel sticky-top" style="top: 110px; z-index: 10;">
+                <h4 class="mb-4 text-uppercase fw-extrabold text-white" style="font-weight: 800;">Ficha de Ruta</h4>
+                
+                <div class="meta-item">
+                    <span class="meta-label"><i class="fa-solid fa-location-dot me-2 text-warning"></i> Región</span>
+                    <span class="meta-value text-warning">RONDA "MÁLAGA" </span>
+                </div>
+                <div class="meta-item">
+                    <span class="meta-label"><i class="fa-solid fa-flag-checkered me-2"></i> Inicio y Fin</span>
+                    <span class="meta-value">Ronda</span>
+                </div>
+                <div class="meta-item">
+                    <span class="meta-label"><i class="fa-solid fa-road me-2"></i> Distancia</span>
+                    <span class="meta-value">100 km</span>
+                </div>
+                <div class="meta-item">
+                    <span class="meta-label"><i class="fa-regular fa-clock me-2"></i> Duración</span>
+                    <span class="meta-value">2 h 9 min</span>
+                </div>
+                <div class="meta-item">
+                    <span class="meta-label"><i class="fa-solid fa-gauge me-2"></i> Dificultad</span>
+                    <span class="meta-value text-warning">MEDIA</span>
+                </div>
+
+                <div class="mt-4 pt-2">
+                    <a href="rutas.html" class="btn btn-outline-secondary w-100 text-uppercase fw-bold text-white border-secondary" style="font-size: 0.85rem;"><i class="fa-solid fa-arrow-left me-2"></i> Volver a rutas</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<footer>
+    <div class="container">
+        <div class="row g-5">
+            <div class="col-lg-5">
+                <a class="navbar-brand text-white mb-4 d-inline-flex" href="index.html">
+                    <img src="img/logo.png" width="65" class="me-3" alt="Logo">
+                    <div>
+                        <span style="color: var(--color-naranja); font-weight: 800; font-size: 1.2rem;">TRIMOTEROS</span>
+                        <span style="font-size: 0.8rem; color: #666; display: block; letter-spacing: 2px;">DEL SUR</span>
+                    </div>
+                </a>
+                <p class="footer-text mt-3">La hermandad trimotora del sur de España. Unidos por la carretera, la libertad y el rugido del motor.</p>
+                <p class="footer-text mt-3 mb-4" style="font-size: 0.8rem; letter-spacing: 1px;">FUNDADO EN 2025 · ANDALUCÍA</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#"><i class="fa-brands fa-youtube"></i></a>
+                </div>
+            </div>
+
+            <div class="col-lg-3 offset-lg-1">
+                <h5 class="footer-title">Navegación</h5>
+                <ul class="footer-links">
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="rutas.html">Rutas</a></li>
+                    <li><a href="noticias.html">Noticias</a></li>
+                    <li><a href="sobre-nosotros.html">Sobre Nosotros</a></li>
+                    <li><a href="contacto.html">Contacto</a></li>
+                </ul>
+            </div>
+
+            <div class="col-lg-3">
+                <h5 class="footer-title">Contacto</h5>
+                <ul class="footer-links footer-contact">
+                    <li><i class="fa-solid fa-location-dot"></i> Andalucía, Sur de España</li>
+                    <li><i class="fa-regular fa-envelope"></i> contacto@trimoterosdelsur.es</li>
+                    <li><i class="fa-solid fa-phone"></i> +34 600 000 000</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div>© 2025 Trimoteros del Sur. Todos los derechos reservados.</div>
+            <div>HECHO CON FUEGO Y GASOLINA</div>
+        </div>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

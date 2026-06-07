@@ -143,7 +143,7 @@
             border-color: var(--color-naranja);
         }
 
-        /* TARJETAS DE RUTA (Estilo exacto de tus capturas) */
+        /* TARJETAS DE RUTA */
         .card-ruta {
             background: #0d0d0d;
             border: 1px solid var(--color-borde);
@@ -174,9 +174,10 @@
             font-weight: 700;
             text-transform: uppercase;
         }
+        .badge-dificultad.aniversario { background: rgba(220, 53, 69, 0.2); color: #ff4444; border: 1px solid rgba(220, 53, 69, 0.4); }
         .badge-dificultad.facil { background: rgba(25, 135, 84, 0.2); color: #198754; border: 1px solid rgba(25, 135, 84, 0.3); }
         .badge-dificultad.media { background: rgba(255, 140, 0, 0.2); color: var(--color-naranja); border: 1px solid rgba(255, 140, 0, 0.3); }
-        .badge-dificultad.dificil { background: rgba(220, 53, 69, 0.2); color: #dc3545; border: 1px solid rgba(220, 53, 69, 0.3); }
+        .badge-dificultad.dificil { background: rgba(111, 66, 193, 0.2); color: #6f42c1; border: 1px solid rgba(111, 66, 193, 0.3); }
         
         .ruta-tipo {
             color: var(--color-gris);
@@ -321,63 +322,23 @@
             font-size: 0.8rem;
         }
 
-        /* =========================================
-           ADAPTACIÓN RESPONSIVE (MÓVILES Y TABLETS)
-           ========================================= */
-
-        /* Tablets y móviles grandes (hasta 991px) */
+        /* ADAPTACIÓN RESPONSIVE */
         @media (max-width: 991px) {
-            .hero-seccion h1 {
-                font-size: 3.5rem;
-            }
-            .hero-seccion {
-                padding: 100px 0 50px 0;
-            }
-            .footer-bottom {
-                flex-direction: column;
-                text-align: center;
-                gap: 15px;
-            }
-            .navbar-toggler {
-                border-color: var(--color-naranja);
-            }
-            /* Adaptación del menú de filtros para que no se desborde */
-            .filtro-container {
-                flex-wrap: wrap;
-                justify-content: center;
-            }
-            .filtro-container .ms-auto {
-                margin-left: 0 !important;
-                width: 100%;
-                text-align: center;
-                margin-top: 10px;
-            }
+            .hero-seccion h1 { font-size: 3.5rem; }
+            .hero-seccion { padding: 100px 0 50px 0; }
+            .footer-bottom { flex-direction: column; text-align: center; gap: 15px; }
+            .navbar-toggler { border-color: var(--color-naranja); }
+            .filtro-container { flex-wrap: wrap; justify-content: center; }
+            .filtro-container .ms-auto { margin-left: 0 !important; width: 100%; text-align: center; margin-top: 10px; }
         }
 
-        /* Móviles (hasta 768px) */
         @media (max-width: 768px) {
-            .hero-seccion h1 {
-                font-size: 2.8rem;
-            }
-            .hero-seccion {
-                padding: 80px 0 40px 0;
-                margin-top: 70px;
-            }
-            .filtro-container {
-                gap: 10px;
-            }
-            .btn-filtro {
-                padding: 6px 15px;
-                font-size: 0.75rem;
-            }
-            .card-ruta {
-                padding: 20px;
-            }
-            /* Acomodar la info de la ruta si la pantalla es muy estrecha */
-            .ruta-meta {
-                flex-direction: column;
-                gap: 10px;
-            }
+            .hero-seccion h1 { font-size: 2.8rem; }
+            .hero-seccion { padding: 80px 0 40px 0; margin-top: 70px; }
+            .filtro-container { gap: 10px; }
+            .btn-filtro { padding: 6px 15px; font-size: 0.75rem; }
+            .card-ruta { padding: 20px; }
+            .ruta-meta { flex-direction: column; gap: 10px; }
         }
     </style>
 </head>
@@ -416,17 +377,33 @@
 
 <main class="container">
     
-    <div class="filtro-container">
-        <span class="filtro-label">Dificultad:</span>
-        <button class="btn-filtro active">Todos</button>
-        <button class="btn-filtro">Fácil</button>
-        <button class="btn-filtro">Media</button>
-        <button class="btn-filtro">Difícil</button>
-        <span class="ms-auto text-secondary small">3 rutas disponibles</span>
-    </div>
-
     <div class="row g-4">
         
+        <div class="col-lg-4 col-md-6">
+            <div class="card-ruta">
+                <div>
+                    <div class="card-ruta-header">
+                        <span class="badge-dificultad aniversario">🎉 Especial</span>
+                        <span class="ruta-tipo"><i class="fa-solid fa-star me-1"></i> Club Oficial</span>
+                    </div>
+                    <h3>Ruta 1º Aniversario trimoteros del sur</h3>
+                    <p>Celebramos nuestro primer año rodando juntos por todo lo alto.</p>
+                </div>
+                <div>
+                    <div class="ruta-meta">
+                        <span><i class="fa-solid fa-location-arrow me-1"></i> 100 km</span>
+                        <span><i class="fa-regular fa-clock me-1"></i> 2-3 h</span>
+                    </div>
+                    <div class="ruta-tags">
+                        <span class="tag-pueblo">Aniversario</span>
+                        <span class="tag-pueblo">Almuerzo</span>
+                        <span class="tag-pueblo">Sorteo</span>
+                    </div>
+                    <a href="ruta-1-aniversario.html" class="btn-ver-ruta">Ver ruta completa <i class="fa-solid fa-chevron-right"></i></a>
+                </div>
+            </div>
+        </div>
+
         <div class="col-lg-4 col-md-6">
             <div class="card-ruta">
                 <div>
@@ -447,7 +424,7 @@
                         <span class="tag-pueblo">Pampaneira</span>
                         <span class="tag-pueblo">Capileira</span>
                     </div>
-                    <a href="ruta-detalle.html" class="btn-ver-ruta">Ver ruta completa <i class="fa-solid fa-chevron-right"></i></a>
+                    <a href="ruta-alpujarras.html" class="btn-ver-ruta">Ver ruta completa <i class="fa-solid fa-chevron-right"></i></a>
                 </div>
             </div>
         </div>
@@ -472,7 +449,7 @@
                         <span class="tag-pueblo">Puerto Banús</span>
                         <span class="tag-pueblo">Estepona</span>
                     </div>
-                    <a href="ruta-detalle.html" class="btn-ver-ruta">Ver ruta completa <i class="fa-solid fa-chevron-right"></i></a>
+                    <a href="ruta-costa-del-sol.html" class="btn-ver-ruta">Ver ruta completa <i class="fa-solid fa-chevron-right"></i></a>
                 </div>
             </div>
         </div>
@@ -497,7 +474,7 @@
                         <span class="tag-pueblo">Guadix</span>
                         <span class="tag-pueblo">Baza</span>
                     </div>
-                    <a href="ruta-detalle.html" class="btn-ver-ruta">Ver ruta completa <i class="fa-solid fa-chevron-right"></i></a>
+                    <a href="ruta-sierra-nevada-extrema.html" class="btn-ver-ruta">Ver ruta completa <i class="fa-solid fa-chevron-right"></i></a>
                 </div>
             </div>
         </div>
