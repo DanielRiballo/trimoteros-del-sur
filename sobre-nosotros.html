@@ -163,6 +163,12 @@
             justify-content: center;
             position: relative;
             background: radial-gradient(circle, rgba(255,140,0,0.03) 0%, transparent 70%);
+            overflow: hidden; /* Asegura que la imagen no se salga del círculo */
+        }
+        .logo-decorativo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Ajusta la imagen perfectamente al contenedor circular */
         }
         .logo-decorativo::before {
             content: '';
@@ -171,6 +177,7 @@
             height: 320px;
             border: 1px dashed rgba(255, 255, 255, 0.05);
             border-radius: 50%;
+            pointer-events: none; /* Evita que interfiera con la imagen */
         }
 
         /* SECCIÓN 2: NUESTROS PILARES */
@@ -430,9 +437,9 @@
         </div>
         <div class="col-lg-5">
             <div class="logo-decorativo-container">
+                <!-- Se ha modificado para que puedas poner tu imagen directamente aquí -->
                 <div class="logo-decorativo">
-                    <img src="img/logo-isotipo.png" width="130" alt="Isotipo TDS" onerror="this.style.display='none'; document.getElementById('alt-logo').style.display='block';">
-                    <div id="alt-logo" style="display:none; font-weight:900; color:var(--color-naranja); letter-spacing:2px; font-size:1.8rem;">TDS</div>
+                    <img src="img/tds-imagen.jpg" alt="Imagen TDS Club">
                 </div>
             </div>
         </div>
@@ -481,37 +488,22 @@
         <span class="seccion-tag">El equipo</span>
         <h2 class="seccion-titulo">Los Fundadores</h2>
     </div>
-    <div class="row g-4">
+    <!-- Se añade justify-content-center para que los fundadores queden en el medio centraditos -->
+    <div class="row g-4 justify-content-center">
         <div class="col-lg-3 col-md-6">
             <div class="card-fundador">
                 <div class="avatar-placeholder"><i class="fa-solid fa-users-gear"></i></div>
-                <h4>Carlos "Fuego" Jiménez</h4>
+                <h4> Quino Riballo</h4>
                 <span class="fundador-cargo">Presidente Fundador</span>
-                <span class="fundador-provincia">Málaga</span>
+                <span class="fundador-provincia">Sevilla</span>
             </div>
         </div>
         <div class="col-lg-3 col-md-6">
             <div class="card-fundador" style="border-color: rgba(255, 140, 0, 0.3);">
                 <div class="avatar-placeholder"><i class="fa-solid fa-users-gear"></i></div>
-                <h4>Ana "Tormenta" Vega</h4>
-                <span class="fundador-cargo">Secretaria</span>
-                <span class="fundador-provincia">Sevilla</span>
-            </div>
-        </div>
-        <div class="col-lg-3 col-md-6">
-            <div class="card-fundador">
-                <div class="avatar-placeholder"><i class="fa-solid fa-users-gear"></i></div>
-                <h4>Paco "El Roca" Torres</h4>
-                <span class="fundador-cargo">Tesorero</span>
-                <span class="fundador-provincia">Granada</span>
-            </div>
-        </div>
-        <div class="col-lg-3 col-md-6">
-            <div class="card-fundador">
-                <div class="avatar-placeholder"><i class="fa-solid fa-users-gear"></i></div>
-                <h4>María "Relámpago" Ruiz</h4>
-                <span class="fundador-cargo">Coordinadora de Rutas</span>
-                <span class="fundador-provincia">Almería</span>
+                <h4>Ernesto Javier Jiménez</h4>
+                <span class="fundador-cargo">Vicepresidente</span>
+                <span class="fundador-provincia">Málaga</span>
             </div>
         </div>
     </div>
@@ -559,8 +551,8 @@
                 <h5 class="footer-title">Contacto</h5>
                 <ul class="footer-links footer-contact">
                     <li><i class="fa-solid fa-location-dot"></i> Andalucía, Sur de España</li>
-                    <li><i class="fa-regular fa-envelope"></i> contacto@trimoterosdelsur.es</li>
-                    <li><i class="fa-solid fa-phone"></i> +34 600 000 000</li>
+                    <li><i class="fa-regular fa-envelope"></i> riballoquino@gmail.com</li>
+                    <li><i class="fa-solid fa-phone"></i> +34 680 117 661</li>
                 </ul>
             </div>
         </div>
