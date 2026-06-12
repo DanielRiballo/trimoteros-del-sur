@@ -3,10 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sobre Nosotros - Trimoteros del Sur</title>
     
+    <title>Trimoteros del Sur | motos de 3 ruedas en Andalucía</title>
+
+    <meta name="description" content="Trimoteros del Sur. Club de motos de 3 ruedas en Andalucía. Rutas, eventos y hermandad sobre el asfalto.">
+    <meta property="og:title" content="Trimoteros del Sur">
+    <meta property="og:description" content="La hermandad trimotora del sur de España. Unidos por la carretera, la libertad y el rugido del motor.">
+    <meta property="og:image" content="https://danielriballo.github.io/trimoteros-del-sur/img/foto1.jpg">
+    <meta property="og:url" content="https://danielriballo.github.io/trimoteros-del-sur/">
+    <meta property="og:type" content="website">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="Trimoteros del Sur">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Trimoteros del Sur">
+    <meta name="twitter:description" content="La hermandad trimotora del sur de España">
+    <meta name="twitter:image" content="https://danielriballo.github.io/trimoteros-del-sur/img/foto1.jpg">
+    <link rel="icon" href="https://danielriballo.github.io/trimoteros-del-sur/img/logo.png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
@@ -15,8 +29,8 @@
             --color-naranja: #ff8c00;
             --color-naranja-claro: #ffb347;
             --color-gris: #a0a0a0;
-            --color-borde: #161616;
-            --color-tarjeta: #0d0d0d;
+            --color-borde: #222;
+            --color-tarjeta: #0d0d0d; /* Mantenido para las tarjetas internas */
         }
 
         body {
@@ -26,7 +40,7 @@
             overflow-x: hidden;
         }
 
-        /* NAVBAR (IDÉNTICO) */
+        /* NAVBAR NUEVO */
         .navbar {
             background: rgba(0, 0, 0, 0.9);
             border-bottom: 1px solid var(--color-borde);
@@ -88,7 +102,7 @@
             color: black;
         }
 
-        /* HERO SECCIÓN (Efecto Cuadrícula) */
+        /* HERO SECCIÓN SOBRE NOSOTROS (Adaptado al nuevo sistema de rejilla/diseño) */
         .hero-seccion {
             padding: 140px 0 70px 0;
             text-align: center;
@@ -117,7 +131,7 @@
             letter-spacing: -1px;
         }
 
-        /* ESTILOS DE SUBTÍTULOS Y TAGS */
+        /* ESTILOS DE SUBTÍTULOS Y TAGS DE SECCIÓN */
         .seccion-tag {
             color: var(--color-naranja);
             font-size: 0.8rem;
@@ -145,7 +159,6 @@
         .texto-historia strong {
             color: white;
         }
-        /* Contenedor del Isotipo animado/decorativo */
         .logo-decorativo-container {
             display: flex;
             align-items: center;
@@ -163,12 +176,12 @@
             justify-content: center;
             position: relative;
             background: radial-gradient(circle, rgba(255,140,0,0.03) 0%, transparent 70%);
-            overflow: hidden; /* Asegura que la imagen no se salga del círculo */
+            overflow: hidden;
         }
         .logo-decorativo img {
             width: 100%;
             height: 100%;
-            object-fit: cover; /* Ajusta la imagen perfectamente al contenedor circular */
+            object-fit: cover;
         }
         .logo-decorativo::before {
             content: '';
@@ -177,7 +190,7 @@
             height: 320px;
             border: 1px dashed rgba(255, 255, 255, 0.05);
             border-radius: 50%;
-            pointer-events: none; /* Evita que interfiera con la imagen */
+            pointer-events: none;
         }
 
         /* SECCIÓN 2: NUESTROS PILARES */
@@ -267,25 +280,25 @@
             font-weight: 600;
         }
 
-        /* SECCIÓN 4: CTA UNETE */
-        .seccion-unete {
-            padding: 100px 0;
+        /* NUEVO CTA ESTILO RADIAL GRADIENT */
+        .cta-section {
             text-align: center;
-            border-top: 1px solid var(--color-borde);
+            padding: 120px 20px;
+            background: radial-gradient(circle at center, rgba(255,140,0,0.1) 0%, transparent 60%);
         }
-        .seccion-unete i.fa-star {
+        .cta-icon {
             color: var(--color-naranja);
-            font-size: 1.5rem;
-            margin-bottom: 25px;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
         }
-        .seccion-unete h2 {
+        .cta-section h2 {
             font-size: 2.5rem;
             font-weight: 900;
             text-transform: uppercase;
             margin-bottom: 15px;
         }
 
-        /* FOOTER (IDÉNTICO) */
+        /* FOOTER NUEVO */
         footer {
             background: #000;
             border-top: 1px solid var(--color-borde);
@@ -348,9 +361,7 @@
             font-size: 0.8rem;
         }
 
-        /* =========================================
-           ADAPTACIÓN RESPONSIVE (MÓVILES Y TABLETS)
-           ========================================= */
+        /* ADAPTACIÓN RESPONSIVE */
         @media (max-width: 991px) {
             .hero-seccion {
                 padding: 110px 0 50px 0;
@@ -379,7 +390,7 @@
             .hero-seccion h1 {
                 font-size: 2.4rem;
             }
-            .seccion-unete h2 {
+            .cta-section h2 {
                 font-size: 1.8rem;
             }
             .logo-decorativo {
@@ -398,7 +409,7 @@
 <nav class="navbar navbar-expand-lg fixed-top">
     <div class="container">
         <a class="navbar-brand text-white" href="index.html">
-            <img src="img/logo.png" width="65" class="me-3" alt="Logo">
+            <img src="https://danielriballo.github.io/trimoteros-del-sur/img/logo.png" width="65" class="me-3" alt="Logo">
             <div>
                 TRIMOTEROS
                 <span>DEL SUR</span>
@@ -437,7 +448,6 @@
         </div>
         <div class="col-lg-5">
             <div class="logo-decorativo-container">
-                <!-- Se ha modificado para que puedas poner tu imagen directamente aquí -->
                 <div class="logo-decorativo">
                     <img src="img/tds-imagen.jpg" alt="Imagen TDS Club">
                 </div>
@@ -488,7 +498,6 @@
         <span class="seccion-tag">El equipo</span>
         <h2 class="seccion-titulo">Los Fundadores</h2>
     </div>
-    <!-- Se añade justify-content-center para que los fundadores queden en el medio centraditos -->
     <div class="row g-4 justify-content-center">
         <div class="col-lg-3 col-md-6">
             <div class="card-fundador">
@@ -509,8 +518,8 @@
     </div>
 </section>
 
-<section class="seccion-unete container">
-    <i class="fa-regular fa-star"></i>
+<section class="cta-section container">
+    <div class="cta-icon"><i class="fa-regular fa-star"></i></div>
     <h2>Forma parte de la historia</h2>
     <p class="text-secondary col-md-6 mx-auto mb-4 px-3">La próxima página del libro aún no está escrita. ¿La escribimos juntos?</p>
     <a href="contacto.html" class="btn btn-naranja">Únete al club</a>
@@ -521,7 +530,7 @@
         <div class="row g-5">
             <div class="col-lg-5">
                 <a class="navbar-brand text-white mb-4 d-inline-flex" href="index.html">
-                    <img src="img/logo.png" width="65" class="me-3" alt="Logo">
+                    <img src="https://danielriballo.github.io/trimoteros-del-sur/img/logo.png" width="65" class="me-3" alt="Logo">
                     <div>
                         <span style="color: var(--color-naranja); font-weight: 800; font-size: 1.2rem;">TRIMOTEROS</span>
                         <span style="font-size: 0.8rem; color: #666; display: block; letter-spacing: 2px;">DEL SUR</span>
