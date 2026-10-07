@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>1º Aniversario en Ronda | Trimoteros del Sur</title>
+    <title>Ruta de Chipiona | Trimoteros del Sur</title>
    
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&display=swap" rel="stylesheet">
@@ -90,13 +90,14 @@
 
         /* HERO DE LA RUTA */
         .hero-ruta {
-            height: 55vh;
+            height: 65vh;
             position: relative;
             overflow: hidden;
             display: flex;
             align-items: center;
             justify-content: center;
             margin-top: 85px;
+            border-bottom: 2px solid rgba(255, 140, 0, 0.3);
         }
         .hero-ruta-bg {
             position: absolute;
@@ -110,6 +111,13 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
+            object-position: center;
+            transform: scale(1.05);
+            transition: transform 6s ease-out;
+            filter: brightness(0.85) contrast(1.1);
+        }
+        .hero-ruta:hover .hero-ruta-bg img {
+            transform: scale(1.1);
         }
         .hero-ruta-overlay {
             position: absolute;
@@ -117,7 +125,8 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(to bottom, rgba(5, 5, 5, 0.4), var(--color-fondo));
+            background: radial-gradient(circle at center, rgba(5, 5, 5, 0.2) 0%, rgba(5, 5, 5, 0.8) 75%),
+                        linear-gradient(to bottom, rgba(5, 5, 5, 0.5) 0%, rgba(5, 5, 5, 0.2) 50%, var(--color-fondo) 100%);
             z-index: 1;
         }
         .hero-ruta-content {
@@ -129,26 +138,34 @@
             padding: 0 20px;
         }
         .hero-ruta h1 {
-            font-size: 3.8rem;
+            font-size: 4.2rem;
             font-weight: 900;
             text-transform: uppercase;
-            background: linear-gradient(to bottom, #ffb347, #ff8c00);
+            background: linear-gradient(180deg, #ffffff 0%, #ffb347 50%, #ff8c00 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             margin-bottom: 15px;
             letter-spacing: -1px;
+            filter: drop-shadow(0px 4px 15px rgba(0, 0, 0, 0.9));
         }
         .card-badge {
-            background: rgba(255, 140, 0, 0.1);
-            border: 1px solid rgba(255, 140, 0, 0.3);
+            background: rgba(0, 0, 0, 0.6);
+            border: 1px solid var(--color-naranja);
             color: var(--color-naranja-claro);
-            padding: 6px 14px;
-            border-radius: 4px;
-            font-size: 0.75rem;
+            padding: 8px 18px;
+            border-radius: 50px;
+            font-size: 0.8rem;
             font-weight: 700;
-            letter-spacing: 1.5px;
+            letter-spacing: 2px;
             display: inline-block;
             text-transform: uppercase;
+            box-shadow: 0 0 15px rgba(255, 140, 0, 0.3);
+            backdrop-filter: blur(5px);
+        }
+        .hero-lead-text {
+            color: #e0e0e0;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.9);
+            font-weight: 500;
         }
 
         /* DISEÑO DE CONTENIDO */
@@ -219,7 +236,7 @@
         }
         .video-wrapper {
             position: relative;
-            padding-bottom: 56.25%; /* Relación de aspecto 16:9 */
+            padding-bottom: 56.25%;
             height: 0;
             overflow: hidden;
             background: #000;
@@ -312,10 +329,10 @@
         /* RESPONSIVE */
         @media (max-width: 991px) {
             .hero-ruta {
-                height: 45vh;
+                height: 50vh;
             }
             .hero-ruta h1 {
-                font-size: 2.8rem;
+                font-size: 3rem;
             }
             .section-padding {
                 padding: 45px 0;
@@ -335,11 +352,11 @@
         }
         @media (max-width: 768px) {
             .hero-ruta {
-                height: 40vh;
+                height: 45vh;
                 margin-top: 75px;
             }
             .hero-ruta h1 {
-                font-size: 2.2rem;
+                font-size: 2.3rem;
             }
             .foto-container img {
                 height: 220px;
@@ -377,15 +394,16 @@
     </div>
 </nav>
 
+<!-- PORTADA HERO -->
 <section class="hero-ruta">
     <div class="hero-ruta-bg">
-        <img src="img/1 aniversario.png" alt="Fondo Aniversario Ronda">
+        <img src="img/ruta%20chipiona.jpg?v=2" alt="Fondo Ruta Chipiona">
     </div>
     <div class="hero-ruta-overlay"></div>
     <div class="hero-ruta-content">
         <div class="card-badge mb-3"><i class="fa-solid fa-cake-candles me-1"></i> Ruta Oficial</div>
-        <h1>1º Aniversario Trimoteros del Sur</h1>
-        <p class="lead text-secondary fs-5 col-md-10 mx-auto">Ruta circular de celebración por los parajes más impresionantes de la Serranía de Ronda.</p>
+        <h1>Ruta de Chipiona</h1>
+        <p class="lead fs-5 col-md-10 mx-auto hero-lead-text">Ruta costera de celebración por los parajes más impresionantes de la costa gaditana.</p>
     </div>
 </section>
 
@@ -396,95 +414,77 @@
             <h3 class="mb-4 text-uppercase fw-bold" style="letter-spacing: 1px;">Detalles del Itinerario</h3>
            
             <p class="text-secondary lh-lg mb-4">
-                ¡Arranca la aventura de nuestro 1º Aniversario! Para esta gran ocasión, nos reuniremos en el corazón de Ronda, punto de encuentro inicial y meta de este viaje. Desde allí, iniciaremos la marcha en dirección este cruzando paisajes espectaculares de montaña hacia el precioso pueblo de El Burgo, disfrutando de sus revueltas curvas iniciales que servirán para calentar motores en comunidad.
+                ¡Arranca la aventura por la costa de Chipiona y Sanlúcar! Salimos desde Playaballena Hotel para disfrutar de una ruta por el litoral gaditano, combinando tramos costeros, patrimonio y gastronomía.
             </p>
            
             <p class="text-secondary lh-lg mb-4">
-                Continuando con el trazado norte por la carretera de la serranía, enfilaremos nuestro camino hacia las inmediaciones de Cañete la Real. Este tramo técnico nos regalará tramos exigentes y divertidos perfectos para nuestras trimotos, rodeados por las vistas de las formaciones rocosas de la comarca del Guadalteba.
+                Nuestra primera parada destacada nos lleva hacia la emblemática Bodega El Castillito, un enclave perfecto para disfrutar de la tradición vinícola de la zona antes de continuar la marcha en dirección al centro histórico.
             </p>
 
             <p class="text-secondary lh-lg mb-5">
-                La recta final del circuito nos llevará hacia el oeste, haciendo una parada obligatoria en el emblemático pueblo de Setenil de las Bodegas, famoso por sus asombrosas casas incrustadas bajo los tajos rocosos, un rincón único donde descansaremos y capturaremos recuerdos fotográficos inigualables. Finalmente, completaremos los 100 km regresando con un curveo fluido a Ronda.
+                Continuamos hasta la Plaza del Cabildo en Sanlúcar de Barrameda, un punto de encuentro ideal para reponer fuerzas en un ambiente único antes de encarar el trayecto de vuelta a Playaballena Hotel.
             </p>
-
-            <h3 class="mb-4 text-uppercase fw-bold text-warning" style="letter-spacing: 1px;"><i class="fa-solid fa-map-location-dot me-2"></i>Mapa del Recorrido Completo</h3>
-            <div class="map-container mb-5">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m46!1m12!1m3!1d194216.05644997122!2d-5.228110862995563!3d36.852229343955294!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m31!3e0!4m5!1s0xd0d3143e258a279%3A0x94358021349a5ba2!2zUm9uZGEsIDI5NDAwLCBNw6FsYWdh!3m2!1d36.746209!2d-5.161225099999999!4m5!1s0xd72c916e1e86d2d%3A0x4adb2088b8dca218!2sEl%20Burgo%2C%2029420%2C%20M%C3%A1laga!3m2!1d36.7903297!2d-4.9474281!4m5!1s0xd72b37322e4ae05%3A0x8a07585c33c254da!2zQ2HDsWV0ZSBsYSBSZWFsLCA2OTM0MCwgTcOhbGFnYQ!3m2!1d36.9534194!2d-5.0253977!4m5!1s0xd0d49c8297cdd15%3A0x44842378df0ac406!2sSetenil%20de%20las%20Bodegas%2C%2011692%2C%20C%C3%A1diz!3m2!1d36.863912899999995!2d-5.181303799999999!4m5!1s0xd0d3143e258a279%3A0x94358021349a5ba2!2zUm9uZGEsIDI5NDAwLCBNw6FsYWdh!3m2!1d36.746209!2d-5.161225099999999!5e1!3m2!1ses!2ses!4v1780857611628!5m2!1ses!2ses" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-            </div>
+    
 
             <h3 class="mb-4 text-uppercase fw-bold text-warning" style="letter-spacing: 1px;"><i class="fa-solid fa-camera me-2"></i>Zonas Oficiales para Fotos</h3>
             <div class="row g-4 mb-5">
                 <div class="col-md-6">
                     <div class="foto-container">
-                        <img src="img/foto castillo cañete.jpg" alt="Castillo de Cañete la Real">
+                        <img src="img/Bodega-El-Castillito.jpg" alt="Bodega El Castillito">
                         <div class="foto-info">
-                            <span class="small text-warning fw-bold">1. Castillo Medieval de Cañete la Real</span><br>
-                            <span class="text-secondary" style="font-size: 0.75rem;">Impresionante fortaleza medieval que corona el paisaje de montaña de nuestra ruta.</span>
+                            <span class="small text-warning fw-bold">1. Bodega El Castillito</span><br>
+                            <span class="text-secondary" style="font-size: 0.75rem;">Parada emblemática de la ruta para conocer la tradición bodeguera.</span>
                         </div>
                     </div>
                 </div>
                
                 <div class="col-md-6">
                     <div class="foto-container">
-                        <img src="img/foto bar las espeñas.jpg" alt="Bar Las Peñas Cañete la Real">
+                        <img src="img/Plaza-Cabildo.jpg" alt="Plaza del Cabildo">
                         <div class="foto-info">
-                            <span class="small text-warning fw-bold">2. Bar Las Espeñas (Cañete la Real)</span><br>
-                            <span class="text-secondary" style="font-size: 0.75rem;">Punto oficial de parada técnica en Cañete para refrescarse y disfrutar en hermandad.</span>
-                        </div>
-                    </div>
-                </div>
-               
-                <div class="col-md-12">
-                    <div class="foto-container">
-                        <img src="img/setenil de la bodega.jpg" alt="Setenil de las Bodegas" style="height: 320px;">
-                        <div class="foto-info">
-                            <span class="small text-warning fw-bold">3. Setenil de las Bodegas</span><br>
-                            <span class="text-secondary" style="font-size: 0.75rem;">Parada fotográfica grupal obligatoria bajo las espectaculares formaciones de roca natural de las calles.</span>
+                            <span class="small text-warning fw-bold">2. Plaza del Cabildo</span><br>
+                            <span class="text-secondary" style="font-size: 0.75rem;">Punto de encuentro principal en Sanlúcar para fotos grupales y descanso.</span>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- VÍDEO OFICIAL DE LA RUTA -->
-            <h3 class="mb-4 text-uppercase fw-bold text-warning" style="letter-spacing: 1px;"><i class="fa-solid fa-video me-2"></i>Vídeo Oficial de la Ruta</h3>
-            <div class="col-md-12 mb-5">
-                <div class="video-container">
-                    <div class="video-wrapper">
-                        <!-- URL del reproductor corregida a /preview -->
-                        <iframe src="https://drive.google.com/file/d/1vtuh7mEwBYRv6yAJYIyLicnfJUN-ihR2/preview" allow="autoplay; fullscreen"></iframe>
-                    </div>
-                    <div class="foto-info">
-                        <span class="small text-warning fw-bold"><i class="fa-solid fa-film me-1"></i> Resumen de la Ruta completada</span><br>
-                        <span class="text-secondary" style="font-size: 0.75rem;">Revive los mejores momentos, curvas y paradas de nuestro 1º Aniversario.</span>
-                    </div>
-                </div>
+            <h3 class="mb-4 text-uppercase fw-bold text-warning" style="letter-spacing: 1px;"><i class="fa-solid fa-map-location-dot me-2"></i>Mapa del Recorrido Completo</h3>
+            <div class="map-container mb-5">
+                <iframe 
+                    src="https://maps.google.com/maps?saddr=Playaballena+Hotel,+Rotonda+de+las+Dunas,+s/n,+11100+Rota,+C%C3%A1diz&daddr=Bodega+El+Castillito,+Chipiona+to:Plaza+del+Cabildo,+Sanl%C3%BAcar+de+Barrameda+to:Playaballena+Hotel,+Rotonda+de+las+Dunas,+s/n,+11100+Rota,+C%C3%A1diz&output=embed" 
+                    width="100%" 
+                    height="100%" 
+                    style="border:0;" 
+                    allowfullscreen="" 
+                    loading="lazy" 
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
             </div>
-
         </div>
-
         <div class="col-lg-4">
             <div class="info-panel sticky-top" style="top: 110px; z-index: 10;">
                 <h4 class="mb-4 text-uppercase text-white" style="font-weight: 800;">Ficha de Ruta</h4>
                
                 <div class="meta-item">
                     <span class="meta-label"><i class="fa-solid fa-location-dot me-2 text-warning"></i> Región</span>
-                    <span class="meta-value highlight">Ronda (Málaga)</span>
+                    <span class="meta-value highlight">Chipiona / Sanlúcar (Cádiz)</span>
                 </div>
                 <div class="meta-item">
                     <span class="meta-label"><i class="fa-solid fa-flag-checkered me-2"></i> Inicio y Fin</span>
-                    <span class="meta-value">Ronda</span>
+                    <span class="meta-value">Playaballena Hotel</span>
                 </div>
                 <div class="meta-item">
                     <span class="meta-label"><i class="fa-solid fa-road me-2"></i> Distancia</span>
-                    <span class="meta-value">100 km</span>
+                    <span class="meta-value">Aprox. 30 km</span>
                 </div>
                 <div class="meta-item">
                     <span class="meta-label"><i class="fa-regular fa-clock me-2"></i> Duración</span>
-                    <span class="meta-value">2 h 9 min</span>
+                    <span class="meta-value">45 min</span>
                 </div>
                 <div class="meta-item">
                     <span class="meta-label"><i class="fa-solid fa-gauge me-2"></i> Dificultad</span>
-                    <span class="meta-value highlight">MEDIA</span>
+                    <span class="meta-value highlight">FÁCIL</span>
                 </div>
 
                 <div class="mt-4 pt-2">
